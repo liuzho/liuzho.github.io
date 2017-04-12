@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.3 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            ReactNative利用Navigator实现登录跳转 | 
+        
+        LiuZh
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+        <link rel="dns-prefetch" href="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"/>
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="LiuZh">
+    <meta name="description" content="大三狗一枚，求安卓开发实习ing...">
+    <meta name="keywords" content="null,ReactNative,Navigator">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="LiuZh">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://liuzho.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="ReactNative利用Navigator实现登录跳转 | LiuZh">
+    <meta property="og:description" content="大三狗一枚，求安卓开发实习ing...">
+    <meta property="og:article:tag" content="ReactNative"> <meta property="og:article:tag" content="Navigator"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #E1E1E1;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#OK，现在开始来实现："><span class="post-toc-number">1.</span> <span class="post-toc-text">OK，现在开始来实现：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#界面布局"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">界面布局</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Navigator"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Navigator</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://upload-images.jianshu.io/upload_images/4924025-103fefeb9a3df728.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)">
+    
+            <p class="article-headline-p">
+                ReactNative利用Navigator实现登录跳转
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>LiuZh</strong>
+        <span>3月 08, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Navigator/">Navigator</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/ReactNative/">ReactNative</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2017/03/08/ReactNative利用Navigator实现登录跳转/" class="leancloud-views_num" data-flag-title="ReactNative利用Navigator实现登录跳转">
+     &nbsp;浏览量
+</span>
+
+            </li>
+        </a>
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=ReactNative利用Navigator实现登录跳转&url=https://liuzho.com//2017/03/08/ReactNative利用Navigator实现登录跳转/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://liuzho.com//2017/03/08/ReactNative利用Navigator实现登录跳转/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=LiuZh&title=ReactNative利用Navigator实现登录跳转&summary=大三狗一枚，求安卓开发实习ing...&pics=https://liuzho.com/img/favicon.png&url=https://liuzho.com/2017/03/08/ReactNative利用Navigator实现登录跳转/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>看完全文并且do it你将收获：</p>
+<blockquote>
+<ol>
+<li>导航器组件Navigator的使用</li>
+<li>文本输入组件TextInput的使用（<em>当然不重点说这个，注释里见！</em>）</li>
+<li>安卓特有组件ToastAndroid（<em>iOS直接用alert替代吧</em>）</li>
+</ol>
+</blockquote>
+<p>老套路，来先看看今天要实现一个怎么样的效果：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-c034f3dad002c578.gif?imageMogr2/auto-orient/strip" alt="今天要实现的Demo"></p>
+<h1 id="OK，现在开始来实现："><a href="#OK，现在开始来实现：" class="headerlink" title="OK，现在开始来实现："></a>OK，现在开始来实现：</h1><p>那个username和password的小图标我放在文末，先去另存为一下吧~</p>
+<h2 id="界面布局"><a href="#界面布局" class="headerlink" title="界面布局"></a>界面布局</h2><p>组件的布局样式使用简直就是小菜一碟对不对？那我们直接把布局给写出来！（千万记得import需要的组件噢）</p>
+<pre><code>
+export default class Login extends Component {
+  render() {
+    return (
+      &lt;View 
+        style={styles.container}&gt;
+        &lt;View
+          style={styles.inputBox}&gt;
+          &lt;Image
+            style={styles.img}
+            source={require(&#39;./image/username.png&#39;)}/&gt;//注意你的图片引用路径
+          &lt;TextInput
+            style={styles.input}/&gt;
+        &lt;/View&gt;
+        &lt;View
+          style={styles.inputBox}&gt;
+          &lt;Image
+            source={require(&#39;./image/pwd.png&#39;)}//注意你的图片引用路径
+            style={styles.img}/&gt;
+          &lt;TextInput
+            style={styles.input}/&gt;
+        &lt;/View&gt;
+        &lt;TouchableOpacity
+          style={styles.button}&gt;
+          &lt;Text
+            style={styles.btText}&gt;登录&lt;/Text&gt;
+        &lt;/TouchableOpacity&gt;
+        &lt;TouchableOpacity
+          style={styles.button}&gt;
+          &lt;Text
+            style={styles.btText}&gt;注册&lt;/Text&gt;
+        &lt;/TouchableOpacity&gt;
+      &lt;/View&gt;
+
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: &#39;center&#39;,
+    alignItems: &#39;center&#39;,
+    backgroundColor: &#39;#F5FCFF&#39;,
+  },
+  img: {
+    width: 30,
+    height: 30,
+  },
+  input: {
+    width: 200,
+    height: 40,
+    color: &#39;#fff&#39;,//输入框输入的文本为白色
+  },
+  inputBox: {
+    flexDirection: &#39;row&#39;,
+    justifyContent: &#39;center&#39;,
+    alignItems: &#39;center&#39;,
+    width: 280,
+    height: 50,
+    borderRadius: 8,
+    backgroundColor: &#39;#66f&#39;,
+    marginBottom: 8,
+  },
+  button: {
+    height: 50,
+    width: 280,
+    justifyContent: &#39;center&#39;,
+    alignItems: &#39;center&#39;,
+    borderRadius: 8,
+    backgroundColor: &#39;#66f&#39;,    
+    marginBottom: 8,
+  },
+  btText: {
+    color: &#39;#fff&#39;,
+  }
+});
+</code></pre><p>初步写成的界面是这样：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-103fefeb9a3df728.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一步到位！"></p>
+<p>这个TextInput下划线那么丑？！不行，我得把他干掉：</p>
+<pre><code>......
+        &lt;View
+          style={styles.inputBox}&gt;
+          &lt;Image
+            style={styles.img}
+            source={require(&#39;./image/username.png&#39;)}/&gt;
+          &lt;TextInput
+            style={styles.input}
+            //secureTextEntry={true}  如果是密码框，请开启这个属性！！
+            placeholderTextColor={&#39;#fff&#39;}//提示文本的颜色
+            placeholder={&#39;username&#39;}//提示文本内容
+            underlineColorAndroid={&#39;transparent&#39;}/&gt;{/*设置下划线颜色为透明，就相当于不见了*/}
+        &lt;/View&gt;
+......
+</code></pre><p>OK，这样就把账号的输入框搞定了，那密码框就一样的了，把secureTextEntry设置true，然后placeholder内容改成password就行了！</p>
+<p>来，看看效果：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-a683b7d30812409a.gif?imageMogr2/auto-orient/strip" alt="比较完美了"></p>
+<p>PS.饶了我吧，我也不知道那个光标的颜色要怎么改/(ㄒoㄒ)/~~</p>
+<p>不过界面效果确实很理想，接下来咱们把登录按钮的功能实现一下，预想功能是这样的：（简单判断账号密码是否与预设相同）</p>
+<blockquote>
+<ol>
+<li>点击登录，如果账号密码不匹配，则弹出提示密码错误</li>
+<li>点击登录，如果账号密码匹配，则跳转到应用主界面</li>
+</ol>
+</blockquote>
+<p>那么现在问题来了，我要怎么在点击登录的时候获取到TextInput的文本值呢？</p>
+<blockquote>
+<p>原来TextInput有一个onChangeText属性，该属性接收一个”参数为当前文本的回调函数”，会在文本内容发生变化的时候回调此函数。</p>
+</blockquote>
+<p>既然这样，那就可以在state中设置两个变量分别为username和password，在onChangeText回调函数内setState来更新他们的值！</p>
+<blockquote>
+<p>这里就得说一下了，每次调用setState的时候，都会触发render重新渲染界面（请参考组件生命周期相关知识），这样太消耗资源了，既然这样，那还是不把username和password写在state中吧</p>
+</blockquote>
+<p>username、password和onChangeText：</p>
+<pre><code>export default class Login extends Component {
+
+  username = &#39;&#39;;
+  password = &#39;&#39;;
+
+  //账号框文本变化的回调函数，该回调函数接收的参数为：输入框当前文本内容
+  //通过绑定此函数给onChangeText就实现实时更新username变量
+  onUsernameChanged = (newUsername) =&gt; {
+    console.log(newUsername);//运行后可以在输入框随意输入内容并且查看log验证！
+    this.username = newUsername;
+  };
+
+  //密码框文本变化的回调函数，该回调函数接收的参数为：输入框当前文本内容
+  //通过绑定此函数给onChangeText就实现实时更新password变量
+  onPasswordChanged = (newPassword) =&gt; {
+    console.log(newUsername);//运行后可以在输入框随意输入内容并且查看log验证！
+    this.password = newPassword;
+  };
+
+  render() {
+    return (
+          ......
+          &lt;TextInput
+            onChangeText={this.onUsernameChanged}//绑定文本变化的回调函数
+            style={styles.input}
+            placeholderTextColor={&#39;#fff&#39;}
+            placeholder={&#39;username&#39;}
+            underlineColorAndroid={&#39;transparent&#39;}/&gt;
+          ......
+          &lt;TextInput
+            onChangeText={this.onPasswordChanged}//绑定文本变化的回调函数
+            placeholderTextColor={&#39;#fff&#39;}
+            placeholder={&#39;password&#39;}
+            underlineColorAndroid={&#39;transparent&#39;}
+            secureTextEntry={true}
+            style={styles.input}/&gt;
+            ......
+    );
+  }
+}
+</code></pre><p>现在能获取到输入框的内容了，接下来就给登陆按钮绑定一个点击事件吧！</p>
+<pre><code>  ......
+  login = () =&gt; {
+    if (this.username == &#39;admin&#39; &amp;&amp; this.password == &#39;123&#39;) {
+      //其实安卓的Toast...简直简单到我不用说...（记得引入ToastAndroid）
+      ToastAndroid.show(&#39;登录成功&#39;,ToastAndroid.SHORT);
+    } else {
+      //iOS直接用alert就行了
+      ToastAndroid.show(&#39;登录失败&#39;,ToastAndroid.SHORT);
+    }
+  };
+
+  render() {
+    return (
+      ......
+      &lt;TouchableOpacity
+          onPress={this.login}//绑定一下点击事件
+          style={styles.button}&gt;
+          &lt;Text
+            style={styles.btText}&gt;登录&lt;/Text&gt;
+      &lt;/TouchableOpacity&gt;
+      ......
+    )
+  }
+</code></pre><p>好了，写了这么一坨代码，现在来看看效果：double r</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-6c5e5eea3bb10fab.gif?imageMogr2/auto-orient/strip" alt="登陆按钮搞定"></p>
+<p>还不错，那么下一个目标就是如果账号密码正确，不仅仅是弹一个吐司那么简单，咱们进入一个新的界面（场景Scene）</p>
+<h2 id="Navigator"><a href="#Navigator" class="headerlink" title="Navigator"></a>Navigator</h2><p>Navigator导航器可以帮我们实现场景（Scene）的跳转，那么第一个肯定问题肯定要问啥是场景（Scene）呢：来自<a href="http://reactnative.cn/docs/0.42/using-navigators.html#content" target="_blank" rel="external">RN中文网</a>的解释:</p>
+<blockquote>
+<p>无论是View中包含Text，还是一个排满了图片的ScrollView，渲染各种组件现在对你来说应该已经得心应手了。这些摆放在一个屏幕中的组件，就共同构成了一个“场景（Scene）”。场景简单来说其实就是一个全屏的React组件。与之相对的是单个的Text、Image又或者是你自定义的什么组件，仅仅占据页面中的一部分。</p>
+</blockquote>
+<p>原来场景（Scene）就是一个全屏的React组件！也就是说我们刚刚写的那个界面，就是一个场景（Scene）咯！</p>
+<p>在使用Navigator之前，咱们先把这个登录的界面做成一个“可复用的组件（场景）”，关于怎么制作一个可复用的组件，可以参考我前面的文章<a href="http://www.jianshu.com/p/9634d1696f29" target="_blank" rel="external">ReactNative制作Component控件并且复用</a></p>
+<p>这里我们在项目根目录新建一个scene文件夹，里面用来存放各个scene，接着在文件夹内新建一个LoginScene.js文件，将刚刚写的代码迁移过去（这个过程中注意修改各个和路径有关的地方），最后再index.android.js中引用：【index.android.js】</p>
+<pre><code>/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
+import React, { Component } from &#39;react&#39;;
+import {
+  AppRegistry,
+} from &#39;react-native&#39;;
+
+import LoginScene from &#39;./scene/LoginScene&#39;;
+
+export default class Login extends Component {
+
+  render() {
+    return (
+      &lt;LoginScene/&gt;
+    );
+  }
+}
+
+AppRegistry.registerComponent(&#39;Login&#39;, () =&gt; Login);
+</code></pre><p>完美，效果和之前完全一样！（不放图预览啦，反正一样的）</p>
+<p>Navigator的使用极其简单！他是一个组件，所以使用他也就是一个标签就行了：<navigator> <em>当然你要注意引入这个组件</em></navigator></p>
+<blockquote>
+<p>Navigator有两个必要属性renderScene和initialRoute</p>
+<ol>
+<li>renderScene属性接收一个”返回需要渲染的场景的回调函数”，”该回调函数接收两个参数”—（数据集合/即路由，这个集合中要包含需要展示的scene）和（navigator对象实例），</li>
+<li>initialRoute属性接收一个数据对象，其中必须包含默认展示的场景（启动默认显示的界面），当然你可以在其中添加其他数据（用于数据传递）。注意了，这个数据对象就是第一次传给renderScene的回调函数的第一个参数！！</li>
+</ol>
+</blockquote>
+<p>OK，现在知道Navigator需要的东西，那咱们就给他准备好：</p>
+<pre><code>/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
+import React, { Component } from &#39;react&#39;;
+import {
+  AppRegistry,
+  Navigator
+} from &#39;react-native&#39;;
+
+import LoginScene from &#39;./scene/LoginScene&#39;;
+
+export default class Login extends Component {
+
+  //第一次调用的时候，第一个参数route就是initialRoute
+  renderScene = (route, navigator) =&gt; {
+    return(
+      &lt;route.scene //这里返回route中包含的场景，在界面上渲染该场景
+        navigator={navigator}/&gt;//并且将navigator作为一个参数传递给这个场景，以便在这个场景中做场景跳转
+    );
+  }
+
+  //默认的route数据，其中必须包含第一次需要渲染的场景，不然显示啥？
+  initialRoute = {
+    scene: LoginScene,
+    //你也可以在这里继续添加其他数据，然后在renderScene中取出，用于场景的数据传递，不展开叙述这个了！
+  }
+
+  render() {
+    return (
+      &lt;Navigator
+        initialRoute={this.initialRoute}
+        renderScene={this.renderScene}/&gt;
+    );
+  }
+}
+
+AppRegistry.registerComponent(&#39;Login&#39;, () =&gt; Login);
+</code></pre><p>这个时候还是来double r看一看效果：</p>
+<p><em>好吧由于界面效果和之前完全一样，没有变化，就不贴图了。（没红就是最好的效果啦）</em></p>
+<p>那么怎么控制场景切换，在哪里控制场景切换呢？在上面的代码我们看到，navigator对象实例传递给了每一个Scene，而场景切换正是由navigator实例对象来控制的：</p>
+<blockquote>
+<p>navigator拥有一系列方法，用于场景切换<a href="http://reactnative.cn/docs/0.42/navigator.html" target="_blank" rel="external">RN中文网Navigator API</a></p>
+<ul>
+<li>getCurrentRoutes() - 获取当前栈里的路由，也就是push进来，没有pop掉的那些。</li>
+<li>jumpBack() - 跳回之前的路由，当然前提是保留现在的，还可以再跳回来，会给你保留原样。</li>
+<li>jumpForward() - 上一个方法不是调到之前的路由了么，用这个跳回来就好了。</li>
+<li>jumpTo(route) - 跳转到已有的场景并且不卸载。</li>
+<li>push(route) - 跳转到新的场景，并且将场景入栈，你可以稍后跳转过去</li>
+<li>pop() - 跳转回去并且卸载掉当前场景</li>
+<li>replace(route) - 用一个新的路由替换掉当前场景</li>
+<li>replaceAtIndex(route, index) - 替换掉指定序列的路由场景</li>
+<li>replacePrevious(route) - 替换掉之前的场景</li>
+<li>resetTo(route) - 跳转到新的场景，并且重置整个路由栈</li>
+<li>immediatelyResetRouteStack(routeStack) - 用新的路由数组来重置路由栈</li>
+<li>popToRoute(route) - pop到路由指定的场景，在整个路由栈中，处于指定场景之后的场景将会被卸载。</li>
+<li>popToTop() - pop到栈中的第一个场景，卸载掉所有的其他场景。<br>######所有场景都在栈中，由navigator控制出栈入栈，这些解释我相信大家很容易就明白</li>
+</ul>
+</blockquote>
+<p>在第一个显示的场景是LoginScene的情况下，场景切换的控制权当然在[LoginScene.js]中了！！不过这个时候你更应该想到的是：要切换场景就需要&gt;=2个场景，但是现在却只有一个场景，所以现在的任务就是在scene文件夹下新建一个【HomeScene.js】文件了！</p>
+<pre><code>/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
+import React, { Component } from &#39;react&#39;;
+import {
+  Text,
+  View,
+  StyleSheet
+} from &#39;react-native&#39;;
+
+
+export default class HomeScene extends Component {
+
+  render() {
+    return (
+      &lt;View
+        style={styles.container}&gt;
+        &lt;Text&gt;登录成功!这是主页!&lt;/Text&gt;
+      &lt;/View&gt;
+    );
+  }
+
+}
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: &#39;center&#39;,
+    alignItems: &#39;center&#39;,
+  },
+});
+</code></pre><p>接下来，就是需要在【LoginScene.js】中控制账号密码匹配后跳转到这个主页场景中：</p>
+<pre><code>.....
+import HomeScene from &#39;./HomeScene&#39;;//千万别忘了引入！！
+  ......
+  login = () =&gt; {
+    if (this.username == &#39;admin&#39; &amp;&amp; this.password == &#39;123&#39;) {
+      this.props.navigator.push({//还记得navigator作为属性传给了每一个scene吗！对了，就是这样取到他
+        scene: HomeScene,//通过push方法将一个scene入栈，push方法接收一个route，其中必须包含一个scene
+      });
+      ToastAndroid.show(&#39;登录成功&#39;,ToastAndroid.SHORT);
+    } else {
+      ToastAndroid.show(&#39;登录失败&#39;,ToastAndroid.SHORT);
+    }
+  };
+  ......
+</code></pre><p>这个时候来看一下整体的效果：double r</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-d77ba83940d61331.gif?imageMogr2/auto-orient/strip" alt="实现了场景切换"></p>
+<p>可以看到，这个时候已经实现了场景跳转，并且可以看到在第二个场景可以通过在左边缘向右滑返回上一个场景。可是现在还有一个重大bug，就是第二个场景出来的时候，居然和第一个场景出现了图像的重叠？？</p>
+<p>经过分析和尝试，发现问题出在这儿：【HomeScene.js】</p>
+<pre><code>......
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: &#39;center&#39;,
+    alignItems: &#39;center&#39;,
+    //在这里我们并没有给第二个场景设置背景颜色！如果没有设置背景颜色，默认就是透明的
+    //这就导致了第二个场景在出现并叠在第一个场景之上的时候，会出现图像的重叠
+    //解决方法就是给第二个场景加上一个背景颜色！
+    backgroundColor: &#39;#F5FCFF&#39;,
+  },
+});
+</code></pre><p>这个时候就解决图像重叠的问题了！不信你double r试试看</p>
+<blockquote>
+<p>这里有一个特别有意思的地方，就是你在登录成功并且跳转到第二个场景之后，你再按两下R重载界面试试？<br>是不是发现无论多疯狂的按R键，都不会重载界面？<br>这个时候你从左边缘向右滑动，返回上一个场景，你会发现密码框出现了一坨的r</p>
+<ul>
+<li>这就是有趣的地方，RN的场景切换，现在看来应该只是把第一个场景给隐藏了！可以想象成向左滑动一点距离之后设置透明度为0，这样就看不见了。<br>刚刚登陆场景向左滑动并且隐藏，可是密码输入框的焦点还在，所以这个时候你按r当然就是在向密码框输入内容了！</li>
+</ul>
+</blockquote>
+<p>当然另一方面，在逻辑上来说，既然用户是登录进入了第二个场景，那么自然不可能通过滑动返回到登录界面！所以再登录按钮的方法中navigator.push()应该换成navigator.replace()，这样在登录成功的情况下就无法返回到上一个场景了，因为栈中已经没有登录的场景了！</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-3ef7496dca44ec9d.gif?imageMogr2/auto-orient/strip" alt="几乎是个成品了"></p>
+<p>既然看到了这儿，那么Navigator最基本的用法你已经掌握了，开头的效果，你也很容易能加上了—–无非是每个场景多加一个button来实现场景切换嘛！</p>
+<p>接下来把图片给你们！</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-ea30193db175032a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="username.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-c8667ba6b957c319.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="pwd.png"></p>
+<p>我靠，在文章里这么大…..算了，拿着用吧分辨率是510*510的…的…好吧我之前一直没注意用的是这么大的图片！！</p>
+<p>接下来就是代码啦：</p>
+<p>【index.android.js】</p>
+<pre><code>/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
+import React, { Component } from &#39;react&#39;;
+import {
+  AppRegistry,
+  Navigator
+} from &#39;react-native&#39;;
+
+import LoginScene from &#39;./scene/LoginScene&#39;;
+
+export default class Login extends Component {
+
+  renderScene = (route, navigator) =&gt; {
+    return(
+      &lt;route.scene 
+        navigator={navigator}/&gt;
+    );
+  }
+  initialRoute = {
+    scene: LoginScene,
+  }
+
+  render() {
+    return (
+      &lt;Navigator
+        initialRoute={this.initialRoute}
+        renderScene={this.renderScene}/&gt;
+    );
+  }
+}
+
+AppRegistry.registerComponent(&#39;Login&#39;, () =&gt; Login);
+</code></pre><p>【LoginScene.js】</p>
+<pre><code>/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
+import React, { Component } from &#39;react&#39;;
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Image,
+  TouchableOpacity,
+  ToastAndroid
+} from &#39;react-native&#39;;
+
+import HomeScene from &#39;./HomeScene.js&#39;;
+
+export default class LoginScene extends Component {
+
+  username = &#39;&#39;;
+  password = &#39;&#39;;
+
+  onUsernameChanged = (newUsername) =&gt; {
+    this.username = newUsername;
+  };
+
+  onPasswordChanged = (newPassword) =&gt; {
+    this.password = newPassword;
+  };
+
+  login = () =&gt; {
+    if (this.username == &#39;admin&#39; &amp;&amp; this.password == &#39;123&#39;) {
+      this.props.navigator.replace({
+        scene: HomeScene,
+      });
+      ToastAndroid.show(&#39;登录成功&#39;,ToastAndroid.SHORT);
+    } else {
+      ToastAndroid.show(&#39;登录失败&#39;,ToastAndroid.SHORT);
+    }
+  };
+
+  render() {
+    return (
+      &lt;View 
+        style={styles.container}&gt;
+        &lt;View
+          style={styles.inputBox}&gt;
+          &lt;Image
+            style={styles.img}
+            source={require(&#39;../image/username.png&#39;)}/&gt;
+          &lt;TextInput
+            onChangeText={this.onUsernameChanged}
+            style={styles.input}
+            placeholderTextColor={&#39;#fff&#39;}//提示文本的颜色
+            placeholder={&#39;username&#39;}//提示文本内容
+            underlineColorAndroid={&#39;transparent&#39;}/&gt;{/*设置下划线颜色为透明，就相当于不见了*/}
+        &lt;/View&gt;
+        &lt;View
+          style={styles.inputBox}&gt;
+          &lt;Image
+            source={require(&#39;../image/pwd.png&#39;)}
+            style={styles.img}/&gt;
+          &lt;TextInput
+            onChangeText={this.onPasswordChanged}
+            placeholderTextColor={&#39;#fff&#39;}
+            placeholder={&#39;password&#39;}
+            underlineColorAndroid={&#39;transparent&#39;}
+            secureTextEntry={true}//密码输入框
+            style={styles.input}/&gt;
+        &lt;/View&gt;
+        &lt;TouchableOpacity
+          onPress={this.login}
+          style={styles.button}&gt;
+          &lt;Text
+            style={styles.btText}&gt;登录&lt;/Text&gt;
+        &lt;/TouchableOpacity&gt;
+        &lt;TouchableOpacity
+          style={styles.button}&gt;
+          &lt;Text
+            style={styles.btText}&gt;注册&lt;/Text&gt;
+        &lt;/TouchableOpacity&gt;
+      &lt;/View&gt;
+
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: &#39;center&#39;,
+    alignItems: &#39;center&#39;,
+    backgroundColor: &#39;#F5FCFF&#39;,
+  },
+  img: {
+    width: 30,
+    height: 30,
+  },
+  input: {
+    width: 200,
+    height: 40,
+    color: &#39;#fff&#39;,
+  },
+  inputBox: {
+    flexDirection: &#39;row&#39;,
+    justifyContent: &#39;center&#39;,
+    alignItems: &#39;center&#39;,
+    width: 280,
+    height: 50,
+    borderRadius: 8,
+    backgroundColor: &#39;#66f&#39;,
+    marginBottom: 8,
+  },
+  button: {
+    height: 50,
+    width: 280,
+    justifyContent: &#39;center&#39;,
+    alignItems: &#39;center&#39;,
+    borderRadius: 8,
+    backgroundColor: &#39;#66f&#39;,    
+    marginBottom: 8,
+  },
+  btText: {
+    color: &#39;#fff&#39;,
+  }
+});
+</code></pre><p>【HomeScene.js】</p>
+<pre><code>/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
+import React, { Component } from &#39;react&#39;;
+import {
+  Text,
+  View,
+  StyleSheet
+} from &#39;react-native&#39;;
+
+
+export default class HomeScene extends Component {
+
+  render() {
+    return (
+      &lt;View
+        style={styles.container}&gt;
+        &lt;Text&gt;登录成功!这是主页!&lt;/Text&gt;
+      &lt;/View&gt;
+    );
+  }
+
+}
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: &#39;center&#39;,
+    alignItems: &#39;center&#39;,
+    backgroundColor: &#39;#F5FCFF&#39;,
+  },
+});
+</code></pre>
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/03/02/ReactNative网络fetch数据并展示在listview中/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/03/18/向Retrofit打响第一炮/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="LiuZh's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        更多地址
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="https://github.com/liuzho" target="_blank" title="GitHub">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">link</i>
+                        
+                        GitHub
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="#" target="_blank" title="简书">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">link</i>
+                        
+                        简书
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="#" target="_blank" title="掘金">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">link</i>
+                        
+                        掘金
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="#" target="_blank" title="SegmentFault">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">link</i>
+                        
+                        SegmentFault
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="#" target="_blank" title="CSDN">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">link</i>
+                        
+                        CSDN
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/AndroidNative/">AndroidNative<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/ReactNative/">ReactNative<span class="sidebar_archives-count">4</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="/friends" title="友情链接">
+                
+                友情链接
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">6</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;LiuZh
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+    
+        <script src="/js/smoothscroll.js"></script>
+    
+
+
+
+    <!-- Leancloud -->
+    <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+    <script>
+        AV.initialize('yP7BkMPSAzmjRNPzN1kGYPc4-gzGzoHsz', 'rbsTwmf40cn4E0vJpGh5qnuR');
+    </script>
+    <script>
+    function showTime(Counter) {
+        var query = new AV.Query(Counter);
+        $('.leancloud-views_num').each(function() {
+            var url = $(this).attr('id').trim();
+            query.equalTo('url', url);
+            query.find({
+                success: function(results) {
+                    if (results.length === 0) {
+                        var content = '0 ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                        return;
+                    }
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+                        var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    }
+                },
+                error: function(object, error) {
+                    console.log('Error: ' + error.code + ' ' + error.message);
+                }
+            });
+        });
+    }
+
+    function addCount(Counter) {
+      var Counter = AV.Object.extend('Counter');
+      url = $('.leancloud-views_num').attr('id').trim();
+      title = $('.leancloud-views_num').attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo('url', url);
+      query.find({
+          success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment('time');
+                counter.save(null, {
+                    success: function(counter) {
+                        var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+              var newcounter = new Counter();
+              newcounter.set('title', title);
+              newcounter.set('url', url);
+              newcounter.set('time', 1);
+              newcounter.save(null, {
+                  success: function(newcounter) {
+                      console.log('newcounter.get(\'time\')='+newcounter.get('time'));
+                      var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+                      $(document.getElementById(url)).text(content);
+                  },
+                  error: function(newcounter, error) {
+                      console.log('Failed to create');
+                  }
+              });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + ' ' + error.message);
+        }
+      });
+    }
+    $(function() {
+        var Counter = AV.Object.extend('Counter');
+        if ($('.leancloud-views_num').length === 1) {
+            addCount(Counter);
+        } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setTimeout(function(){
+            setInterval(function(){
+                queue.execNext();
+            },200);
+        },3000);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

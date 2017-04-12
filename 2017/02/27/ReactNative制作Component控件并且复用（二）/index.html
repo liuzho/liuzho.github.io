@@ -10,7 +10,7 @@
     
     <title>
         
-            links | 
+            ReactNative制作Component控件并且复用（二） | 
         
         LiuZh
     </title>
@@ -34,7 +34,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="LiuZh">
     <meta name="description" content="大三狗一枚，求安卓开发实习ing...">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,ReactNative,Component">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -60,9 +60,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://liuzho.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="links | LiuZh">
+    <meta property="og:title" content="ReactNative制作Component控件并且复用（二） | LiuZh">
     <meta property="og:description" content="大三狗一枚，求安卓开发实习ing...">
-    
+    <meta property="og:article:tag" content="ReactNative"> <meta property="og:article:tag" content="Component"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -225,133 +225,453 @@
 
                     <!-- Post TOC -->
 
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
 
 <!-- Layouts -->
 
-    <!-- Single Links Page -->
-    <style>
-    .md-links {
-        min-height: calc(100% - 120px - 5pc - 6em);
-        text-align: center;
-        overflow: auto;
-        padding: 0;
-        margin: 0 auto;
-        max-width: 320px;
-    }
+    <!-- Post Module -->
+    <div class="material-post_container">
 
-    @media screen and (min-width: 640px) {
-        .md-links {
-            max-width: 640px;
-        }
-    }
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
 
-    @media screen and (min-width: 960px) {
-        .md-links {
-            max-width: 960px;
-        }
-    }
-
-    @media screen and (min-width: 1280px) {
-        .md-links {
-            max-width: 1280px;
-        }
-    }
-
-    @media screen and (min-width: 1600px) {
-        .md-links {
-            max-width: 1600px;
-        }
-    }
-
-    @media screen and (max-width: 480px) {
-        .md-links {
-            min-height: calc(100% - 200px - 5pc - 6em);
-            margin-top: 6em;
-        }
-    }
-
-    .md-links-item {
-        background: #fff;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
-        height: 72px;
-        line-height: 15px;
-        margin: 20px 10px;
-        padding: 0px 0px;
-        transition: box-shadow 0.25s;
-    }
-
-    .md-links a {
-        color: #333;
-        text-decoration: none;
-    }
-
-    .md-links li {
-        width: 300px;
-        float: left;
-        list-style: none;
-    }
-
-    .md-links-item img {
-        float: left;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 11px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
-    }
-
-    .md-links-item:hover {
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .md-links-item a:hover{
-        cursor: pointer;
-    }
-
-    .md-links-title {
-        font-size: 20px;
-        line-height: 50px;
-    }
-
-    #scheme-Paradox .mdl-mini-footer{
-        clear: left;
-    }
-    #bottom{
-        position: relative;
-    }
-</style>
-
-<ul class="md-links">
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
-        
-            <li class="md-links-item">
-                <a href="https://oyhfe.com" title="OYH" target="_blank">
-                    <img src="null" alt="OYH" width="72px"/>
-                    <span class="md-links-title">OYH</span><br />
-                    <span>oyh的技术博客</span>
-                </a>
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://upload-images.jianshu.io/upload_images/4924025-13e9d32dee3c806c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)">
+    
+            <p class="article-headline-p">
+                ReactNative制作Component控件并且复用（二）
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>LiuZh</strong>
+        <span>2月 27, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Component/">Component</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/ReactNative/">ReactNative</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2017/02/27/ReactNative制作Component控件并且复用（二）/" class="leancloud-views_num" data-flag-title="ReactNative制作Component控件并且复用（二）">
+     &nbsp;浏览量
+</span>
+
             </li>
-        
-            <li class="md-links-item">
-                <a href="https://hzzly.github.io" title="Hzzly" target="_blank">
-                    <img src="null" alt="Hzzly" width="72px"/>
-                    <span class="md-links-title">Hzzly</span><br />
-                    <span>Hzzly的技术博客</span>
-                </a>
+        </a>
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=ReactNative制作Component控件并且复用（二）&url=https://liuzho.com//2017/02/27/ReactNative制作Component控件并且复用（二）/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
             </li>
-        
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://liuzho.com//2017/02/27/ReactNative制作Component控件并且复用（二）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=LiuZh&title=ReactNative制作Component控件并且复用（二）&summary=大三狗一枚，求安卓开发实习ing...&pics=https://liuzho.com/img/favicon.png&url=https://liuzho.com/2017/02/27/ReactNative制作Component控件并且复用（二）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
     
 </ul>
 
-<script>
-    var adjustFooter = function() {
-        if( ($('#bottom').offset().top + $('#bottom').outerHeight() )<$(window).height() ) {
-            var footerBottom = $(window).height() - $('#bottom').outerHeight() - $('#bottom').offset().top;
-            $('#bottom').css('bottom', '-' + footerBottom + 'px');
-        }
-    };
-    $(document).ready(function() {
-        adjustFooter();
-    });
-</script>
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>在上一篇博客《ReactNative制作Component控件并且复用（一）》中简单介绍了一下如何定义一个可复用的控件，并且引用他。这篇博客继续上一篇，介绍怎样在使用自定义控件的时候传递数据、设置样式等一些问题。OK 开始吧：</p>
+<p>刚刚我们制作了一个长得还算过得去的Button：<br><img src="http://upload-images.jianshu.io/upload_images/4924025-cbf1e7d38ed35f18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="长得还行的button"><br>接着提出了这样一个疑问：不可能我所有的按钮都叫确认、背景颜色都是绿色、文本都是白色、都长这个体型吧……</p>
+<p>当然了，这个时候第一个想到的就是给他设置样式！好，那接下来写一个style并且设置给button</p>
+<p>先加一个叫button的样式，暂时就先改个背景颜色吧：【index.android.js】</p>
+<pre><code>const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: &#39;center&#39;,
+    alignItems: &#39;center&#39;,
+  },
+  button: {
+    backgroundColor: &#39;#f00&#39;,//红色背景
+  }
+});
+</code></pre><p>接下来给Button设置style：</p>
+<pre><code>return (
+  &lt;View 
+    style = { styles.container }&gt;
+    {/*通过import引入了Button控件后，就可以像下面这样直接使用这个控件*/}
+    &lt;Button
+      style = { styles.button }&gt;
+    &lt;/Button&gt;
+  &lt;/View&gt;
+);
+</code></pre><p>这样是不是就给Button换了一下背景颜色呢？先看一下吧，double r：<br><img src="http://upload-images.jianshu.io/upload_images/4924025-cbf1e7d38ed35f18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="还是那个长得还行的button"><br>我去，怎么没变化呀？那我设置宽高等其他属性再试试！（你尽管试，能起作用算我输，我就不试了…）</p>
+<p>那么，这个按钮的样式到底要怎么控制呢？还记得在【Button.js】中写的样式吗？来回顾一下：</p>
+<pre><code>/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
+import React, { Component } from &#39;react&#39;;
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from &#39;react-native&#39;;
+
+export default class Button extends Component {
+  render() {
+    return (
+        &lt;TouchableOpacity 
+          style={styles.button}&gt;
+          &lt;Text 
+            style={ styles.btText }&gt; 
+            {&quot;确认&quot;} 
+          &lt;/Text&gt;
+        &lt;/TouchableOpacity&gt;
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  button: {
+    height: 30,
+    width: 200,
+    backgroundColor: &#39;#0f0&#39;,
+    borderRadius: 10,
+    justifyContent: &#39;center&#39;,
+    alignItems: &#39;center&#39;,
+  },
+  btText: {
+    color: &#39;#fff&#39;,
+    fontSize: 16,
+  },
+});
+</code></pre><p>看见了吧，按钮的样式是【Button.js】里<code>&lt;TouchableOpacity&gt;</code>的style控制的，文本的样式在在<text>的style控制的！</text></p>
+<p>那难道每需要一个按钮都要新建一个【XXButon.js】来满足不同地方的需求？当然不是啦，还记得Props（属性）吗？<a href="http://reactnative.cn/docs/0.41/props.html#content" target="_blank" rel="external">props文档</a>，这个得会才能往下看噢。</p>
+<p>既然可以通过props传递数据，那么我当然可以在【index.andorid.js】中通过<code>&lt;Button&gt;</code>的props传递数据！再来看一遍刚刚写的：</p>
+<pre><code>&lt;Button
+  style = { styles.button }&gt;
+&lt;/Button&gt;
+</code></pre><p>咦，这不就是相当于给<code>&lt;Button&gt;</code>的props.style设定了一个值（样式对象）吗？可是这个值在哪儿接收呢？当然是在定义这个控件的地方了：【Button.js】！这样的话，就能在【Button.js】中取到这个”styles.button”，将他设置给<touchableopacity>就行了。机智！马上来一发：【Button.js】</touchableopacity></p>
+<pre><code>……
+return (
+  &lt;TouchableOpacity 
+    style={this.props.style}&gt;
+      &lt;Text 
+        style={ styles.btText }&gt; 
+        {&quot;确认&quot;} 
+      &lt;/Text&gt;
+  &lt;/TouchableOpacity&gt;
+);
+……
+</code></pre><p>来，double r：<br><img src="http://upload-images.jianshu.io/upload_images/4924025-13e9d32dee3c806c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="通过&lt;Button&gt;的props改变了背景色的button"><br>哇66666背景色成功设置！等会儿……为什么宽高和圆角不见了？？what？？回头看下代码，噢，原来<touchableopacity>设置了style={this.props.style}，而这个style是从调用这个button的地方传来的，我们刚刚只设置了backgroundColor，所以只有背景色一个样式……好，那返回【index.android.js】给这个按钮修改一下样式：</touchableopacity></p>
+<pre><code>……
+  button: {
+    backgroundColor: &#39;#f00&#39;,
+    width: 100,
+    height: 50,
+    borderRadius: 10,
+  }
+……
+</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/4924025-2ef9578f88c836a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="通过&lt;Button&gt;的props设置了样式的buttn"><br>额……好吧，有点小尴尬，文本没居中……那继续写样式？？我的天，这样的话，每次使用<code>&lt;Button&gt;</code>都要写文本居中的代码？！</p>
+<p>诶，有了：给Button设置一个默认的样式，每次引用的时候我只修改我需要修改的某几个样式属性，这样不就OK了？行，敲起来【Button.js】：</p>
+<pre><code>&lt;TouchableOpacity 
+  style={[styles.button,this.props.style]}&gt;
+  &lt;Text 
+    style={ styles.btText }&gt; 
+     {&quot;确认&quot;} 
+  &lt;/Text&gt;
+&lt;/TouchableOpacity&gt;
+</code></pre><p>发现没，style还可以这样赋值！赋一个样式对象数组！原来这样写的作用是取两个样式对象的合集，而写在前面的样式对象(styles.button)的属性，会被写在后面的样式对象(this.props.style)的同名属性覆盖，这样说可能太抽象了，拿这个例子来说：</p>
+<p>styles.button（这段代码在【Button.js】中）是这样的：</p>
+<pre><code>  button: {
+    height: 30,
+    width: 200,
+    backgroundColor: &#39;#0f0&#39;,
+    borderRadius: 10,
+    justifyContent: &#39;center&#39;,
+    alignItems: &#39;center&#39;,
+  }
+</code></pre><p>this.props.style（这段代码在【index.android.js】中）是这样的：</p>
+<pre><code>  button: {
+    backgroundColor: &#39;#f00&#39;,
+    width: 100,
+    height: 50,
+    borderRadius: 10,
+  }
+</code></pre><p>这两个样式对象[合并]后应该是这样的：</p>
+<pre><code>{
+    height: 30,// styles.button特有
+    width: 200,// styles.button特有
+    backgroundColor: ‘#f00’,//两个都有，但是值会取后面的！前者会被后者覆盖！
+    borderRadius: 10,//这个其实也是被覆盖，只是两个都写了10而已，你可以试试把其中任意一个10换成其他的，看看效果
+    justifyContent: ‘center’,// styles.button特有
+    alignItems: ‘center’// styles.button特有
+}
+</code></pre><p>当然了，如果是this.props.style中特有的属性，肯定也是会出现在合并后的样式中的(合集/并集嘛)。本例中，this.props.style中的borderRadius其实可以不用写，因为默认样式（styles.button）已经设置了</p>
+<p>说了这么多，看下这样写的效果到底是怎么样的吧：double r</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-b4cdfdada16a8568.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="比较完美的button"><br>OK，近乎完美！</p>
+<p>那接下来，”设定文本内容和文本样式”的过程就不多说了，都是一样的，直接甩上所有代码！：（注意代码中写的onPress事件触发的函数也是一样通过这个方法传递的！可以自己分析并优化一下代码！）<br>【index.android.js】:</p>
+<pre><code>import React, { Component } from &#39;react&#39;;
+import {
+  AppRegistry,
+  StyleSheet,
+  View,
+} from &#39;react-native&#39;;
+
+// 注意了！！就是这句话把刚刚写的Button.js引入使用！
+// 导入 Button 从 &#39;./component/Button&#39;（Buton.js文件的路径） 
+// ----最后Button不需要写成Button.js
+import Button from &#39;./component/Button&#39;;
+
+export default class button extends Component {
+  render() {
+
+    return (
+      &lt;View 
+        style = { styles.container }&gt;
+        &lt;Button
+          style = { styles.button }
+          {/*通过textStyle属性传递了文本样式*/}
+          textStyle = { styles.txStyle }
+          {/*通过text属性传递了文本内容*/}
+          text = {&quot;引用设置&quot;}
+          {/*通过onPress属性传递了一个弹窗函数*/}
+          onPress = { () =&gt; {alert(&quot;你点击了按钮&quot;);} }&gt;
+        &lt;/Button&gt;
+      &lt;/View&gt;
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: &#39;center&#39;,
+    alignItems: &#39;center&#39;,
+  },
+  button: {
+    backgroundColor: &#39;#f00&#39;,
+    width: 100,
+    height: 50,
+  },
+  txStyle: {
+    color: &#39;#00f&#39;,
+    fontSize: 20,
+  }
+});
+
+AppRegistry.registerComponent(&#39;button&#39;, () =&gt; button);
+</code></pre><p>【Button.js】：</p>
+<pre><code>import React, { Component } from &#39;react&#39;;
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from &#39;react-native&#39;;
+
+// 这里特别注意 export default 关键字，只有加上关键字才能在其他文件引用本文件
+// 注意class Button 是大写，与Button.js保持一致
+export default class Button extends Component {
+  render() {
+    return (
+        &lt;TouchableOpacity 
+          style={[styles.button,this.props.style]}
+          // 将接收到的onPress（即this.props.onPress)设置给TouchableOpacity的onPress
+          onPress={this.props.onPress}&gt;
+          &lt;Text 
+            // 设置文本样式
+            style={ [styles.btText,this.props.textStyle] }&gt; 
+            {/*设置文本内容*/}
+            {this.props.text} 
+          &lt;/Text&gt;
+        &lt;/TouchableOpacity&gt;
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  // button默认样式
+  button: {
+    height: 30,
+    width: 200,
+    backgroundColor: &#39;#0f0&#39;,
+    borderRadius: 10,
+    justifyContent: &#39;center&#39;,
+    alignItems: &#39;center&#39;,
+  },
+  // 文本内容默认样式
+  btText: {
+    color: &#39;#fff&#39;,
+    fontSize: 16,
+  },
+});
+</code></pre><p>完成效果是这样的：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-be84129c67a6faba.gif?imageMogr2/auto-orient/strip" alt="一个完美的button"></p>
+
+    
+
+    
+</div>
 
 
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/02/27/ReactNative制作Component控件并且复用（一）/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/03/02/ReactNative网络fetch数据并展示在listview中/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
 
 
 
@@ -570,6 +890,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 

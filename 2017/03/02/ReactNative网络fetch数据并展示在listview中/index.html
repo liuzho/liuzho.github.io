@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.3 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            ReactNative网络fetch数据并展示在listview中 | 
+        
+        LiuZh
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+        <link rel="dns-prefetch" href="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"/>
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="LiuZh">
+    <meta name="description" content="大三狗一枚，求安卓开发实习ing...">
+    <meta name="keywords" content="null,ReactNative,Fetch">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="LiuZh">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://liuzho.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="ReactNative网络fetch数据并展示在listview中 | LiuZh">
+    <meta property="og:description" content="大三狗一枚，求安卓开发实习ing...">
+    <meta property="og:article:tag" content="ReactNative"> <meta property="og:article:tag" content="Fetch"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #E1E1E1;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#好，正题开始："><span class="post-toc-number">1.</span> <span class="post-toc-text">好，正题开始：</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#拿到了数据，接下来开始使用listview了"><span class="post-toc-number">2.</span> <span class="post-toc-text">拿到了数据，接下来开始使用listview了</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://upload-images.jianshu.io/upload_images/4924025-cfd810b08e4a9aad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)">
+    
+            <p class="article-headline-p">
+                ReactNative网络fetch数据并展示在listview中
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>LiuZh</strong>
+        <span>3月 02, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Fetch/">Fetch</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/ReactNative/">ReactNative</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2017/03/02/ReactNative网络fetch数据并展示在listview中/" class="leancloud-views_num" data-flag-title="ReactNative网络fetch数据并展示在listview中">
+     &nbsp;浏览量
+</span>
+
+            </li>
+        </a>
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=ReactNative网络fetch数据并展示在listview中&url=https://liuzho.com//2017/03/02/ReactNative网络fetch数据并展示在listview中/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://liuzho.com//2017/03/02/ReactNative网络fetch数据并展示在listview中/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=LiuZh&title=ReactNative网络fetch数据并展示在listview中&summary=大三狗一枚，求安卓开发实习ing...&pics=https://liuzho.com/img/favicon.png&url=https://liuzho.com/2017/03/02/ReactNative网络fetch数据并展示在listview中/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>看完全文并且do it你将收获：</p>
+<blockquote>
+<ol>
+<li>fetch获取网络数据的基本用法</li>
+<li>ListView的基本用法</li>
+<li>RN中组件的生命周期（有可能）</li>
+</ol>
+</blockquote>
+<p>类似的实现其实有很多朋友已经写过了，我也看了几篇类似博客</p>
+<p>这篇<a href="http://lib.csdn.net/article/reactnative/56364" target="_blank" rel="external">《react-native中listview获取豆瓣书本信息并展示出来》</a>确实是一个值得学习的例子，但作者只是一步一步贴代码，没有很好的细讲</p>
+<p>这篇<a href="http://www.jianshu.com/p/1c5dc5cd6d97" target="_blank" rel="external">《React Native从网络拉取数据并填充列表》</a>写的不错，值得一看，不过listview没有图片，效果看起来没有我的有逼格（傲娇脸）</p>
+<p>来，先看下最终我们要实现一个怎么样的效果吧：<br><img src="http://upload-images.jianshu.io/upload_images/4924025-4482d01062676542.gif?imageMogr2/auto-orient/strip" alt="实现效果"></p>
+<h1 id="好，正题开始："><a href="#好，正题开始：" class="headerlink" title="好，正题开始："></a>好，正题开始：</h1><p>要展示出这样一个listview的效果，首先需要有数据源，我这里私藏了两个能返回json（带有图片地址）的url：</p>
+<blockquote>
+<p>url最后的数字是返回数据的数量，可以自己修改<br>比如第一个url将返回30条数据，第二个url将返回3条</p>
+<ol>
+<li><a href="http://www.imooc.com/api/teacher?type=4&amp;num=30" target="_blank" rel="external">http://www.imooc.com/api/teacher?type=4&amp;num=30</a></li>
+<li><a href="https://api.douban.com/v2/book/search?q=react&amp;count=3" target="_blank" rel="external">https://api.douban.com/v2/book/search?q=react&amp;count=3</a></li>
+</ol>
+</blockquote>
+<p>我们先看一看返回的json长啥样，在浏览器中输入url后：</p>
+<blockquote>
+<p>我使用的是chrome浏览器，通过插件“JSON-handle”将json格式化并展示了出来，很友好的效果，其他浏览器也有类似插件，可自行搞定</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-cfd810b08e4a9aad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="在浏览器中看到的json数据"></p>
+<p>果然是好长一段的json！我们需要的内容在json&gt;data中，对比预览图得知需要的数据段为：name、picSmall(当然用小图啦)、description三个。</p>
+<p>OK，既然有了数据源，那么接下来要做的就是通过网络请求去获取数据</p>
+<p>RN中的网络请求通过Fetch进行，最简单的fetch写法是传入一个url参数：</p>
+<pre><code>fetch(&#39;http://www.imooc.com/api/teacher?type=4&amp;num=30&#39;);
+</code></pre><p>通过这一句就成功发起了一个网络请求，当然fetch方法还有第二个可选参数，这个参数用于传入一些HTTP请求的参数如：headers、请求方式(GET/POST)等<br>援引<a href="http://reactnative.cn/docs/0.42/network.html#content" target="_blank" rel="external">RN中文网fetch</a>一段示例代码：</p>
+<pre><code>fetch(&#39;https://mywebsite.com/endpoint/&#39;, {
+  method: &#39;POST&#39;,
+  headers: {
+    &#39;Accept&#39;: &#39;application/json&#39;,
+    &#39;Content-Type&#39;: &#39;application/json&#39;,
+  },
+  body: JSON.stringify({
+    firstParam: &#39;yourValue&#39;,
+    secondParam: &#39;yourOtherValue&#39;,
+  })
+})
+</code></pre><p>仅用于获取简单的数据则完全可以忽略第二个参数</p>
+<p>在用fetch请求网络成功后，会返回的是一个Promise对象，用于检索我们需要的数据，但我们需要的是一个json对象来便于处理数据，那么怎样将这个Promise对象转换成json对象呢？fetch有非常方便的链式调用方法来搞定：</p>
+<pre><code>    fetch(&#39;https://mywebsite.com/endpoint/&#39;)
+    .then((response) =&gt; response.json());//response就是fetch返回的Promise对象
+
+    //.then()中传入一个回调函数，该回调函数接收fetch返回的对象
+    //你可以在这个时候将Promise对象转换成json对象:response.json()
+    //转换成json对象后return，给下一步的.then处理
+</code></pre><blockquote>
+<p>没错！.then可以一直接下去！并且每一个.then都接收一个回调函数，这个回调函数都接收上一个.then返回的数据，这样做数据处理岂不是美滋滋！</p>
+</blockquote>
+<p>ok，既然这样，那我们在下一个.then中接收到这个由上一个.then返回的json对象，并将他设置给this.state以便于后面的使用：</p>
+<pre><code>  constructor(props){
+    super(props);
+
+    this.state = {
+      data: null,
+    };
+  }
+
+  componentDidMount(){
+    fetch(&#39;http://www.imooc.com/api/teacher?type=4&amp;num=30&#39;)
+    .then((response) =&gt; response.json())
+    .then((jsonData) =&gt; {        //jsonData就是上一步的response.json()
+      this.setState({
+        data: jsonData.data,     //data是一个对象数组
+      });
+    })                           //你后面还可以继续疯狂的接.then并且传递数据，尽管试试吧！
+    .catch((error) =&gt; {          //注意尾部添加异常回调
+      alert(error);
+    });
+  }
+//上一个.then的回调函数返回的数据，由下一个.then的回调函数接收
+</code></pre><blockquote>
+<p>为啥把fetch写在componentDidMount()中呢，因为这是一个RN中组件的生命周期回调函数，会在组件渲染后回调<br>关于更多组件生命周期戳<a href="http://www.race604.com/react-native-component-lifecycle/" target="_blank" rel="external">React Native 中组件的生命周期</a></p>
+</blockquote>
+<p>那么我们最终得到的this.state.data到底长啥样的？根据json结构来分析一下，json.data是一个对象数组，现在赋给了this.state.data，那么this.state.data应该就是一个对象数组，我们来检测一下：</p>
+<pre><code>  componentDidMount(){
+    fetch(&#39;http://www.imooc.com/api/teacher?type=4&amp;num=30&#39;)
+    .then((response) =&gt; response.json())
+    .then((jsonData) =&gt; {
+      this.setState({
+        data: jsonData.data,
+      });
+      let n = this.state.data[0].name;
+      let d = this.state.data[0].description;
+      alert(&quot;n:&quot; + n + &quot;,d:&quot; + d);
+    })
+    .catch((error) =&gt; {
+      alert(error);
+    });
+  }
+</code></pre><p>double r:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-c1729e5aa636e847.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="提取data中的数据"><br>很好，这说明data是一个对象数组，通过数组取值方法取到了值，结构看json那边，这样就很好的可以取到其中的值</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-aad7650a8aecba82.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="data中的第一条数据"></p>
+<blockquote>
+<p><strong>关于更多详细的fetch介绍可以自行G/B，也墙裂建议认真看看、理解fetch</strong></p>
+</blockquote>
+<h1 id="拿到了数据，接下来开始使用listview了"><a href="#拿到了数据，接下来开始使用listview了" class="headerlink" title="拿到了数据，接下来开始使用listview了"></a>拿到了数据，接下来开始使用listview了</h1><p>首先得导入ListView组件（我很容易忘记导入组件），接下来就是把它写在布局中<br>使用<listview>的时候，有两个必须参数：dataSource、renderRow</listview></p>
+<pre><code>&lt;ListView
+  dataSource={}      //必须写此属性并且传入dataSource对象
+  renderRow={}&gt;      //必须写此属性并且传入一个返回component的回调函数
+&lt;/ListView&gt;
+</code></pre><p>这个很容易理解，listview要展示数据，必须得有数据源(dataSource)，之后listview必须知道他每一行长啥样，他才能去渲染(renderRow)<br><strong>dataSource</strong><br>dataSource是ListView下的一个类，新建一个dataSource:</p>
+<pre><code>let ds = new ListView.DataSource({rowHasChanged: (r1, r2) =&gt; r1 !== r2});
+//DataSource()可以接收四种参数
+//rowHasChanged就是渲染每一行的依据，r1是上一行的数据，r2是下一行的数据
+//此处定义：r1和r2不同时，需要渲染新的一行
+</code></pre><p>关于DataSource可接收四种参数：</p>
+<blockquote>
+<ol>
+<li>getRowData(dataBlob, sectionID, rowID)：表明我们将以何种方式从dataBlob（数据源）中提取出rowData，sectionID用于指定每一个section的标题名（在renderRow，renderHeader等方法中会默认拆开并作为参数传入）</li>
+<li>getSectionHeaderData(dataBlob, sectionID)：表明我们将以何种方式从dataBlob（数据源）中提取出HeaderData。HeaderData用于给每一个sectionHeader赋值</li>
+<li>rowHasChanged(prevRowData, nextRowData)：指定我们更新row的策略，一般来说都是prevRowData和nextRowData不相等时更新row</li>
+<li>sectionHeaderHasChanged(prevSectionData, nextSectionData)：指定我们更新sectionHeader的策略，一般如果用到sectionData的时候才指定</li>
+</ol>
+<p>引自：<a href="http://www.jianshu.com/p/1293bb8ac969" target="_blank" rel="external">React-Native组件用法详解之ListView</a><br>==========本次Demo实现只需要用到rowHasChanged<br><strong>墙裂建议认真学习更多listview详细内容</strong></p>
+</blockquote>
+<p>这个时候我们创建出来的ds还并不拥有任何数据，在传给listview之前还要进行一个步骤：</p>
+<pre><code>let lvData = ds.cloneWithRows(this.state.data);
+//可以粗暴理解为：将this.state.data克隆到lvData，只有经过这一步的数据才能给listview使用
+</code></pre><p>我们希望网络请求到数据时立即进行cloneWithRows这一步，这样this.state.data在网络请求完成后就直接被赋值成为可以传递给listview的对象：</p>
+<pre><code>    fetch(&#39;http://www.imooc.com/api/teacher?type=4&amp;num=30&#39;)
+    .then((response) =&gt; response.json())
+    .then((jsonData) =&gt; {
+      this.setState({
+        data: new ListView.DataSource({rowHasChanged: (r1,r2) =&gt; r1!==r2 }).cloneWithRows(jsonData.data),
+      });
+    })
+    .catch((error) =&gt; {
+      alert(error);
+    });
+</code></pre><p><strong>renderRow</strong><br><code>&lt;listview&gt;</code>的renderRow属性接收一个“返回每一行的组件的回调函数”，该回调函数接收一个分配给该行的数据，在本例中即为json.data中的子项<br>OK，既然知道renderRow需要啥，并且知道每一行长啥样：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-c16a6df5764c20f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="listview的一行的样式"></p>
+<p>我们就可以根据这个样式来写一个需要的回调函数：</p>
+<pre><code>export default class lvtest extends Component {
+
+………………
+  // 返回listview的一行
+  renderRow(rowData){//参数为接收的每一行的数据，理解：数组data的子项
+    return(
+      &lt;View                                //最外层包裹的View
+        style = {styles.lvRow}&gt;
+          &lt;Image                           //左侧显示的图片
+            style = { styles.img }
+            source = { { uri: rowData.picSmall } }/&gt;//source为rowData中的picSmall，
+                                                    //致于你换rowData.picBig也行，更消耗流量加载慢就是
+        &lt;View                              //包裹文本的View
+          style = { styles.textView }&gt;
+          &lt;Text                            //标题
+            style = { styles.textTitle }
+            numberOfLines = { 1 }&gt;         //只显示一行
+            { rowData.name }               //取rowData中的name字段,理解:data[某行].name
+                                  //注意：this.state.data不能直接当做数组使用，他是一个dataSource对象
+          &lt;/Text&gt;
+          &lt;Text                //详细内容文本
+            style = { styles.textContent }&gt;
+            { rowData.description }        //取rowData中的description字段,理解:data[某行].description
+          &lt;/Text&gt;
+        &lt;/View&gt;
+      &lt;/View&gt;
+    )
+  }
+}
+//样式，
+const styles = StyleSheet.create({
+  lvRow: {
+    flex: 1,
+    flexDirection: &#39;row&#39;,
+    padding: 10,
+  },
+  textView: {
+    flex: 1,
+    justifyContent: &#39;center&#39;,
+    alignItems: &#39;center&#39;,
+    padding: 5,
+  },
+
+  textTitle: {
+    flex: 1,
+    textAlign: &#39;center&#39;,
+    color: &#39;#f00&#39;,
+  },
+
+  textContent: {
+    flex: 1,
+    fontSize: 11,
+    color: &#39;#000&#39;,
+    textAlign: &#39;center&#39;,
+  },
+
+  img: {
+    height: 55,
+    width: 100,
+  }
+});
+</code></pre><p>除了rowData.name、rowData.description、rowData.picSmall，我相信大家都很容易看明白这个布局的实现，至此我们所有的代码如下：（还有个坑呢，继续看完！）</p>
+<pre><code>import React, { Component } from &#39;react&#39;;
+import {
+  AppRegistry,
+  StyleSheet,
+  View,
+  Text,
+  ListView
+} from &#39;react-native&#39;;
+
+
+export default class lvtest extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      data: null,
+    };
+  }
+
+  render() {
+    return (
+      &lt;ListView
+        dataSource={this.state.data}
+        renderRow={(rowData) =&gt; this.renderRow(rowData)}&gt;
+      &lt;/ListView&gt;
+    );
+  }
+
+
+// 生命周期回调函数,在其中进行网络请求
+  componentDidMount(){
+    fetch(&#39;http://www.imooc.com/api/teacher?type=4&amp;num=30&#39;)
+    .then((response) =&gt; response.json())
+    .then((jsonData) =&gt; {
+      this.setState({
+        data: new ListView.DataSource({rowHasChanged: (r1,r2) =&gt; r1!==r2 }).cloneWithRows(jsonData.data),
+      });
+    })
+    .catch((error) =&gt; {
+      alert(error);
+    });
+  }
+  // 返回listview的一行
+  renderRow(rowData){
+    return(
+      &lt;View 
+        style = {styles.lvRow}&gt;
+          &lt;Image 
+            style = { styles.img }
+            source = { { uri: rowData.picSmall } }/&gt;
+        &lt;View 
+          style = { styles.textView }&gt;
+          &lt;Text
+            style = { styles.textTitle }
+            numberOfLines = { 1 }&gt;
+            { rowData.name }
+          &lt;/Text&gt;
+          &lt;Text
+            style = { styles.textContent }&gt;
+            { rowData.description }
+          &lt;/Text&gt;
+        &lt;/View&gt;
+      &lt;/View&gt;
+    )
+  }
+}
+
+
+
+const styles = StyleSheet.create({
+  lvRow: {
+    flex: 1,
+    flexDirection: &#39;row&#39;,
+    padding: 10,
+  },
+  textView: {
+    flex: 1,
+    justifyContent: &#39;center&#39;,
+    alignItems: &#39;center&#39;,
+    padding: 5,
+  },
+
+  textTitle: {
+    flex: 1,
+    textAlign: &#39;center&#39;,
+    color: &#39;#f00&#39;,
+  },
+
+  textContent: {
+    flex: 1,
+    fontSize: 11,
+    color: &#39;#000&#39;,
+    textAlign: &#39;center&#39;,
+  },
+
+  img: {
+    height: 55,
+    width: 100,
+  }
+});
+
+AppRegistry.registerComponent(&#39;lvtest&#39;, () =&gt; lvtest);
+</code></pre><p>当我怀着无比期待的心情double r之后：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-cbd6a164ae52fd6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="疯狂报错"></p>
+<p>仔细一看，咦，貌似说dataSource为空，我不是通过fetch获取到了数据并且clone给了this.state.data吗？怎么会是空呢？</p>
+<p><strong>通过你不懈的排查发现，原来是这里的问题：</strong></p>
+<pre><code>  render() {
+    return (
+      &lt;ListView
+        dataSource={this.state.data}
+        renderRow={(rowData) =&gt; this.renderRow(rowData)}&gt;
+      &lt;/ListView&gt;
+    );
+  }
+</code></pre><blockquote>
+<p>APP一启动，马上就要渲染ListView，而fetch数据是一个耗时操作，在启动APP的一瞬间this.state.data肯定是没有数据的！所以在渲染listview时提取数据，发现你传给他的dataSource居然是个空的，那他当然不干，要给你报红了！</p>
+</blockquote>
+<p>既然知道哪里错了，那就来解决一下：</p>
+<pre><code>  render() {
+    if(!this.state.data){//如果this.state.data没有数据(即网络请求未完成),则返回一个加载中的文本
+      return(
+          &lt;Text&gt;loading...&lt;/Text&gt;
+      );
+    } else {//当this.state.data有了数据，则渲染ListView
+      return (
+        &lt;ListView
+          dataSource={this.state.data}
+          renderRow={(rowData) =&gt; this.renderRow(rowData)}&gt;
+        &lt;/ListView&gt;
+      );
+    }
+  }
+</code></pre><p>OK，这个时候再来double r跑一下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-a9c18d47c577719e.gif?imageMogr2/auto-orient/strip" alt="究极形态"></p>
+<p>到此，我们就很完美的实现了这样一个小demo，致于最顶端那个预览有点击效果，你可以在renderRow中的布局里，通过包裹<touchable...>来实现，还有很多可玩性等你do it！</touchable...></p>
+<p>下面附上整个【index.android.js】代码：</p>
+<pre><code>import React, { Component } from &#39;react&#39;;
+import {
+  AppRegistry,
+  StyleSheet,
+  View,
+  Text,
+  ListView,
+  Image
+} from &#39;react-native&#39;;
+
+
+export default class lvtest extends Component {
+
+  constructor(props){
+    super(props);
+
+    this.state = {
+      data: null,
+    };
+  }
+
+  render() {
+    if(!this.state.data){
+      return(
+          &lt;Text&gt;loading...&lt;/Text&gt;
+      );
+    } else {
+      return (
+        &lt;ListView
+          dataSource={this.state.data}
+          renderRow={(rowData) =&gt; this.renderRow(rowData)}&gt;
+        &lt;/ListView&gt;
+      );
+    }
+  }
+
+// 生命周期回调函数
+  componentDidMount(){
+    fetch(&#39;http://www.imooc.com/api/teacher?type=4&amp;num=30&#39;)
+    .then((response) =&gt; response.json())
+    .then((jsonData) =&gt; {
+      this.setState({
+        data: new ListView.DataSource({rowHasChanged: (r1,r2) =&gt; r1!==r2 }).cloneWithRows(jsonData.data),
+      });
+    })
+    .catch((error) =&gt; {
+      alert(error);
+    });
+  }
+
+
+  // 返回listview的一行
+  renderRow(rowData){
+    return(
+      &lt;View 
+        style = {styles.lvRow}&gt;
+          &lt;Image 
+            style = { styles.img }
+            source = { { uri: rowData.picSmall } }/&gt;
+        &lt;View 
+          style = { styles.textView }&gt;
+          &lt;Text
+            style = { styles.textTitle }
+            numberOfLines = { 1 }&gt;
+            { rowData.name }
+          &lt;/Text&gt;
+          &lt;Text
+            style = { styles.textContent }&gt;
+            { rowData.description }
+          &lt;/Text&gt;
+        &lt;/View&gt;
+      &lt;/View&gt;
+    )
+  }
+}
+
+
+
+const styles = StyleSheet.create({
+  lvRow: {
+    flex: 1,
+    flexDirection: &#39;row&#39;,
+    padding: 10,
+  },
+  textView: {
+    flex: 1,
+    justifyContent: &#39;center&#39;,
+    alignItems: &#39;center&#39;,
+    padding: 5,
+  },
+
+  textTitle: {
+    flex: 1,
+    textAlign: &#39;center&#39;,
+    color: &#39;#f00&#39;,
+  },
+
+  textContent: {
+    flex: 1,
+    fontSize: 11,
+    color: &#39;#000&#39;,
+    textAlign: &#39;center&#39;,
+  },
+
+  img: {
+    height: 55,
+    width: 100,
+  }
+});
+
+AppRegistry.registerComponent(&#39;lvtest&#39;, () =&gt; lvtest);
+</code></pre>
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/02/27/ReactNative制作Component控件并且复用（二）/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/03/08/ReactNative利用Navigator实现登录跳转/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="LiuZh's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        更多地址
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="https://github.com/liuzho" target="_blank" title="GitHub">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">link</i>
+                        
+                        GitHub
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="#" target="_blank" title="简书">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">link</i>
+                        
+                        简书
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="#" target="_blank" title="掘金">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">link</i>
+                        
+                        掘金
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="#" target="_blank" title="SegmentFault">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">link</i>
+                        
+                        SegmentFault
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="#" target="_blank" title="CSDN">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">link</i>
+                        
+                        CSDN
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/03/">三月 2017<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/AndroidNative/">AndroidNative<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/ReactNative/">ReactNative<span class="sidebar_archives-count">4</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="/friends" title="友情链接">
+                
+                友情链接
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">6</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;LiuZh
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+    
+        <script src="/js/smoothscroll.js"></script>
+    
+
+
+
+    <!-- Leancloud -->
+    <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+    <script>
+        AV.initialize('yP7BkMPSAzmjRNPzN1kGYPc4-gzGzoHsz', 'rbsTwmf40cn4E0vJpGh5qnuR');
+    </script>
+    <script>
+    function showTime(Counter) {
+        var query = new AV.Query(Counter);
+        $('.leancloud-views_num').each(function() {
+            var url = $(this).attr('id').trim();
+            query.equalTo('url', url);
+            query.find({
+                success: function(results) {
+                    if (results.length === 0) {
+                        var content = '0 ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                        return;
+                    }
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+                        var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    }
+                },
+                error: function(object, error) {
+                    console.log('Error: ' + error.code + ' ' + error.message);
+                }
+            });
+        });
+    }
+
+    function addCount(Counter) {
+      var Counter = AV.Object.extend('Counter');
+      url = $('.leancloud-views_num').attr('id').trim();
+      title = $('.leancloud-views_num').attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo('url', url);
+      query.find({
+          success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment('time');
+                counter.save(null, {
+                    success: function(counter) {
+                        var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+              var newcounter = new Counter();
+              newcounter.set('title', title);
+              newcounter.set('url', url);
+              newcounter.set('time', 1);
+              newcounter.save(null, {
+                  success: function(newcounter) {
+                      console.log('newcounter.get(\'time\')='+newcounter.get('time'));
+                      var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+                      $(document.getElementById(url)).text(content);
+                  },
+                  error: function(newcounter, error) {
+                      console.log('Failed to create');
+                  }
+              });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + ' ' + error.message);
+        }
+      });
+    }
+    $(function() {
+        var Counter = AV.Object.extend('Counter');
+        if ($('.leancloud-views_num').length === 1) {
+            addCount(Counter);
+        } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setTimeout(function(){
+            setInterval(function(){
+                queue.execNext();
+            },200);
+        },3000);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

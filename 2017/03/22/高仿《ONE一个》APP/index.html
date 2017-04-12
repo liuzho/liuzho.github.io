@@ -10,7 +10,7 @@
     
     <title>
         
-            links | 
+            高仿《ONE一个》APP | 
         
         LiuZh
     </title>
@@ -34,7 +34,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="LiuZh">
     <meta name="description" content="大三狗一枚，求安卓开发实习ing...">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,Android,Retrofit,Picasso,APP项目">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -60,9 +60,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://liuzho.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="links | LiuZh">
+    <meta property="og:title" content="高仿《ONE一个》APP | LiuZh">
     <meta property="og:description" content="大三狗一枚，求安卓开发实习ing...">
-    
+    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Retrofit"> <meta property="og:article:tag" content="Picasso"> <meta property="og:article:tag" content="APP项目"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -225,133 +225,283 @@
 
                     <!-- Post TOC -->
 
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#说高仿，其实做成了个山寨…"><span class="post-toc-number">1.</span> <span class="post-toc-text">说高仿，其实做成了个山寨…</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于我"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">关于我</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开发相关"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">开发相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更新："><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">更新：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#大致内容："><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">大致内容：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ONE的API：ONE-API"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">ONE的API：ONE-API</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用到的库："><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">使用到的库：</span></a></li></ol></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
 
 <!-- Layouts -->
 
-    <!-- Single Links Page -->
-    <style>
-    .md-links {
-        min-height: calc(100% - 120px - 5pc - 6em);
-        text-align: center;
-        overflow: auto;
-        padding: 0;
-        margin: 0 auto;
-        max-width: 320px;
-    }
+    <!-- Post Module -->
+    <div class="material-post_container">
 
-    @media screen and (min-width: 640px) {
-        .md-links {
-            max-width: 640px;
-        }
-    }
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
 
-    @media screen and (min-width: 960px) {
-        .md-links {
-            max-width: 960px;
-        }
-    }
-
-    @media screen and (min-width: 1280px) {
-        .md-links {
-            max-width: 1280px;
-        }
-    }
-
-    @media screen and (min-width: 1600px) {
-        .md-links {
-            max-width: 1600px;
-        }
-    }
-
-    @media screen and (max-width: 480px) {
-        .md-links {
-            min-height: calc(100% - 200px - 5pc - 6em);
-            margin-top: 6em;
-        }
-    }
-
-    .md-links-item {
-        background: #fff;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
-        height: 72px;
-        line-height: 15px;
-        margin: 20px 10px;
-        padding: 0px 0px;
-        transition: box-shadow 0.25s;
-    }
-
-    .md-links a {
-        color: #333;
-        text-decoration: none;
-    }
-
-    .md-links li {
-        width: 300px;
-        float: left;
-        list-style: none;
-    }
-
-    .md-links-item img {
-        float: left;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 11px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
-    }
-
-    .md-links-item:hover {
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .md-links-item a:hover{
-        cursor: pointer;
-    }
-
-    .md-links-title {
-        font-size: 20px;
-        line-height: 50px;
-    }
-
-    #scheme-Paradox .mdl-mini-footer{
-        clear: left;
-    }
-    #bottom{
-        position: relative;
-    }
-</style>
-
-<ul class="md-links">
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
-        
-            <li class="md-links-item">
-                <a href="https://oyhfe.com" title="OYH" target="_blank">
-                    <img src="null" alt="OYH" width="72px"/>
-                    <span class="md-links-title">OYH</span><br />
-                    <span>oyh的技术博客</span>
-                </a>
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(https://user-gold-cdn.xitu.io/2017/4/10/113104fb289c083adc821c1926ef4223.png?imageView2/1/w/800/h/400/q/85/format/jpg/interlace/1)">
+    
+            <p class="article-headline-p">
+                高仿《ONE一个》APP
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>LiuZh</strong>
+        <span>3月 22, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/APP项目/">APP项目</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Picasso/">Picasso</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Retrofit/">Retrofit</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2017/03/22/高仿《ONE一个》APP/" class="leancloud-views_num" data-flag-title="高仿《ONE一个》APP">
+     &nbsp;浏览量
+</span>
+
             </li>
-        
-            <li class="md-links-item">
-                <a href="https://hzzly.github.io" title="Hzzly" target="_blank">
-                    <img src="null" alt="Hzzly" width="72px"/>
-                    <span class="md-links-title">Hzzly</span><br />
-                    <span>Hzzly的技术博客</span>
-                </a>
+        </a>
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=高仿《ONE一个》APP&url=https://liuzho.com//2017/03/22/高仿《ONE一个》APP/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
             </li>
-        
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://liuzho.com//2017/03/22/高仿《ONE一个》APP/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=LiuZh&title=高仿《ONE一个》APP&summary=大三狗一枚，求安卓开发实习ing...&pics=https://liuzho.com/img/favicon.png&url=https://liuzho.com/2017/03/22/高仿《ONE一个》APP/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
     
 </ul>
 
-<script>
-    var adjustFooter = function() {
-        if( ($('#bottom').offset().top + $('#bottom').outerHeight() )<$(window).height() ) {
-            var footerBottom = $(window).height() - $('#bottom').outerHeight() - $('#bottom').offset().top;
-            $('#bottom').css('bottom', '-' + footerBottom + 'px');
-        }
-    };
-    $(document).ready(function() {
-        adjustFooter();
-    });
-</script>
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="说高仿，其实做成了个山寨…"><a href="#说高仿，其实做成了个山寨…" class="headerlink" title="说高仿，其实做成了个山寨…"></a>说高仿，其实做成了个山寨…</h1><ul>
+<li><strong>目前完成度看图：</strong></li>
+</ul>
+<p><img src="https://github.com/liuzho/ONE/raw/master/gif/home.gif" alt="home.gif"><img src="https://github.com/liuzho/ONE/raw/master/gif/read.gif" alt="read.gif"><img src="https://github.com/liuzho/ONE/raw/master/gif/music.gif" alt="music.gif"><img src="https://github.com/liuzho/ONE/raw/master/gif/movie.gif" alt="movie.gif"></p>
+<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><ol>
+<li>最近火力全开正在实现中，感兴趣的朋友可以<strong>Start</strong>一下，关注我的后续动作</li>
+<li>虽是火力全开，但学生党目前还有课，有进度但效率可能不太高</li>
+<li>联系我：qq354295878@gmail.com(一个邮箱暴露两个联系方式，完美)</li>
+<li>另：大三狗一枚，求实习岗位中</li>
+</ol>
+<h2 id="开发相关"><a href="#开发相关" class="headerlink" title="开发相关"></a>开发相关</h2><h3 id="更新："><a href="#更新：" class="headerlink" title="更新："></a>更新：</h3><pre><code>    -2017-4-9 ：
+        1. 删除电影简介activity，替换成popupWindow展示
+        2. 每日一图的popupWindow长按图片实现通过Picasso保存图片到制定路径
+
+    -2017-4-8 ：
+        1. 自定义RecyclerView实现滚动实时监听，彻底解决RecyclerView滚动时toolbar显示bug
+        2. 添加水波纹点击效果
+        3. 添加分享按钮弹出popupWindow，包含弹出动画/退出动画
+        4. OneList的每日一图点击弹出popupWindow，长按pop图片，弹出Snackbar提示是否保存图片
+
+    -2017-4-7 ：
+        1. 更换部分图片
+        2. 添加各详情页的评论列表
+        3. 优化部分代码
+        注：后期更新频率会减少
+
+    -2017-4-6 ：
+        1. 添加BaseFragment、优化fragment代码/逻辑
+        2. 自定义RecyclerView实现滚动实时监听(未完成)
+        3. 添加作者信息Activity(未完成/无法完成：无作者文章API)
+
+    -2017-4-5 ：
+        1. 解决tab切换时toolbar显示异常的bug
+        2. 优化fragment代码/逻辑
+
+    -2017-4-2 ：
+        1. 添加页面加载动画（帧动画）
+
+    -2017-3-30：
+        1. 优化代码结构：baseActivity&amp;adapter&amp;布局
+
+    -2017-3-27：
+        1. 实现底部tab点击，主界面所有tab均有内容展现
+
+    -2017-3-25：
+        1. 增加音乐详情页（所有详情页均无显示评论列表，后续加）
+
+    -2017-3-24：
+        1. 增加电影详情页以及部分细节调整/实现
+
+    -...再早没写。一次性出来的...
+</code></pre><h3 id="大致内容："><a href="#大致内容：" class="headerlink" title="大致内容："></a>大致内容：</h3><pre><code>1. Retrofit进行网络请求
+2. Picasoo图片加载；Picasoo保存图片到SD卡
+3. RecycleView显示不同类型item
+4. ViewPager切换动画+Fragment
+5. WebView的JS交互（一丢丢，在MovieActivity）；WebView加载HTML
+6. 等等...细节说不了那么多，也不好表述，都在项目里
+</code></pre><h3 id="ONE的API：ONE-API"><a href="#ONE的API：ONE-API" class="headerlink" title="ONE的API：ONE-API"></a>ONE的API：<a href="https://github.com/jokermonn/-Api/blob/master/ONEv3.5.0~.md" target="_blank" rel="external">ONE-API</a></h3><pre><code>API来自网络，若侵犯《ONE一个》权利，本人将及时停止使用并删除相关内容
+
+**PS**：感谢分享的哥们儿；也提示各位朋友不要用于商业用途
+
+**废话**：《ONE》这个APP的API和JSON不忍直视，原APP卡顿明显，体验差强人意。
+</code></pre><h3 id="使用到的库："><a href="#使用到的库：" class="headerlink" title="使用到的库："></a>使用到的库：</h3><pre><code>- compile &#39;com.squareup.retrofit2:retrofit:2.2.0&#39;//Retrofit
+- compile &#39;com.squareup.retrofit2:converter-gson:2.0.2&#39;//Gson
+- compile &#39;com.squareup.picasso:picasso:2.5.2&#39;//picasso
+- compile &#39;com.android.support:design:25.3.1&#39;//MD
+- compile &#39;com.android.support:recyclerview-v7:25.3.1&#39;//recyclerView
+</code></pre>
+    
+
+    
+</div>
 
 
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/03/18/向Retrofit打响第一炮/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
 
 
 
@@ -570,6 +720,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 

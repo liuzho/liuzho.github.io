@@ -10,7 +10,7 @@
     
     <title>
         
-            about | 
+            向Retrofit打响第一炮 | 
         
         LiuZh
     </title>
@@ -34,7 +34,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="LiuZh">
     <meta name="description" content="大三狗一枚，求安卓开发实习ing...">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,Android,Retrofit">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -60,9 +60,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://liuzho.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="about | LiuZh">
+    <meta property="og:title" content="向Retrofit打响第一炮 | LiuZh">
     <meta property="og:description" content="大三狗一枚，求安卓开发实习ing...">
-    
+    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Retrofit"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -225,6 +225,41 @@
 
                     <!-- Post TOC -->
 
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#正文开始"><span class="post-toc-number">1.</span> <span class="post-toc-text">正文开始</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Retrofit是啥？"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Retrofit是啥？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正式开始使用Retrofit"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">正式开始使用Retrofit</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#首先需要写一个接口"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">首先需要写一个接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#接下来创建一个Retrofit实例，通过Retrofit实例创建-接口的实例"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">接下来创建一个Retrofit实例，通过Retrofit实例创建 接口的实例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#紧接着我们需要一个Call实例来正式的发起请求获取数据"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">紧接着我们需要一个Call实例来正式的发起请求获取数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拿到返回结果之后"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">拿到返回结果之后</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#来，Run起来！"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">来，Run起来！</span></a></li></ol></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
 
 <!-- Layouts -->
 
@@ -238,13 +273,11 @@
                 
     <!-- Paradox Post Header -->
     
-        
-            <!-- Pure Thumbnail -->
-            <div class="post_thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#AA77FF !important">
-        
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://upload-images.jianshu.io/upload_images/4924025-eab057db555c435c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)">
     
             <p class="article-headline-p">
-                about
+                向Retrofit打响第一炮
             </p>
         </div>
 
@@ -263,7 +296,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>LiuZh</strong>
-        <span>4月 12, 2017</span>
+        <span>3月 18, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -287,7 +320,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        
+        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Retrofit/">Retrofit</a>
     </ul>
     
 
@@ -301,7 +334,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/about/index.html" class="leancloud-views_num" data-flag-title="about">
+                <span id="/2017/03/18/向Retrofit打响第一炮/" class="leancloud-views_num" data-flag-title="向Retrofit打响第一炮">
      &nbsp;浏览量
 </span>
 
@@ -313,7 +346,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=about&url=https://liuzho.com//about/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=向Retrofit打响第一炮&url=https://liuzho.com//2017/03/18/向Retrofit打响第一炮/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -328,7 +361,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://liuzho.com//about/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://liuzho.com//2017/03/18/向Retrofit打响第一炮/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -340,7 +373,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=LiuZh&title=about&summary=大三狗一枚，求安卓开发实习ing...&pics=https://liuzho.com/img/favicon.png&url=https://liuzho.com/about/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=LiuZh&title=向Retrofit打响第一炮&summary=大三狗一枚，求安卓开发实习ing...&pics=https://liuzho.com/img/favicon.png&url=https://liuzho.com/2017/03/18/向Retrofit打响第一炮/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -358,7 +391,238 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        
+        <blockquote>
+<p><strong>废话：</strong><br>强行开启了Retrofit的学习模式，但是发现啊，我找到的一些入门文章，简直不要太坑，敲不出来demo不要紧啊，你得讲的让我看懂吧？好，有一篇能看懂的了，喂能不能讲完啊，讲一半死球了不做完一套demo几个意思！</p>
+</blockquote>
+<p>OK既然没有好的Retrofit第一炮的文章，那么我的机会就来了</p>
+<blockquote>
+<p>看完本文并且do it你将收获</p>
+<ol>
+<li>使用Retrofit进行一次基础的不能再基础的网络请求</li>
+<li>没了</li>
+</ol>
+</blockquote>
+<h1 id="正文开始"><a href="#正文开始" class="headerlink" title="正文开始"></a>正文开始</h1><h2 id="Retrofit是啥？"><a href="#Retrofit是啥？" class="headerlink" title="Retrofit是啥？"></a>Retrofit是啥？</h2><p>我想既然朋友你找到这篇文章，一定心里有个底，简单说就是<strong>一个简化网络操作的库</strong></p>
+<ul>
+<li><p>准备工作<br><strong>1. 添加依赖</strong></p>
+<pre><code>//这是Retrofit的包
+  compile &#39;com.squareup.retrofit2:retrofit:2.2.0&#39;
+//这是Retrofit用来将得到的json转化成bean对象的包
+  compile &#39;com.squareup.retrofit2:converter-gson:2.0.2&#39;
+</code></pre><p><strong>2. 用于请求数据的api，这里送你一个</strong></p>
+<pre><code>//最后面的num=3，这个数字可以自己改，需要几条数据就写几
+http://www.imooc.com/api/teacher?type=4&amp;num=3
+</code></pre><p><strong>3. json对应的javabean</strong><br>咱们先将2中的url用浏览器访问一下，会得到一串json字符串<br><del>根据json内容自己敲一个bean</del><br>复制json字符串，然后去<a href="http://www.jsonschema2pojo.org/" target="_blank" rel="external">jsonschema2pojo</a>将他转化成一个bean<br><img src="http://upload-images.jianshu.io/upload_images/4924025-b15735d01523902d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="jsonschema2pojo"><br>下载之后你得到了：<strong>Bean.java</strong>和<strong>Datum.java</strong>两个源文件</p>
+<pre><code>/**Bean.java**/
+public class Bean {
+      public Integer status;
+      public List&lt;Datum&gt; data = null;
+      public String msg;
+      private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;&gt;();
+
+      public Map&lt;String, Object&gt; getAdditionalProperties() {
+          return this.additionalProperties;
+      }
+
+      public void setAdditionalProperty(String name, Object value) {
+          this.additionalProperties.put(name, value);
+      }
+}
+</code></pre><pre><code>/**Datum.java**/
+public class Datum {
+      public Integer id;
+      public String name;
+      public String picSmall;
+      public String picBig;
+      public String description;
+      public Integer learner;
+      private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;&gt;();
+
+      public Map&lt;String, Object&gt; getAdditionalProperties() {
+          return this.additionalProperties;
+      }
+
+      public void setAdditionalProperty(String name, Object value) {
+          this.additionalProperties.put(name, value);
+      }
+}
+</code></pre><p>接下来你需要将他们复制到你项目的包下，因为你要用到他们<br><strong>至此，准备就工作就全部做完了</strong></p>
+</li>
+</ul>
+<h2 id="正式开始使用Retrofit"><a href="#正式开始使用Retrofit" class="headerlink" title="正式开始使用Retrofit"></a>正式开始使用Retrofit</h2><h3 id="首先需要写一个接口"><a href="#首先需要写一个接口" class="headerlink" title="首先需要写一个接口"></a>首先需要写一个接口</h3><p>这个接口规定get、post请求的url参数；规定一个返回Call对象（这个call对象用于正式发起请求并获得返回数据）的方法，这个方法接收的参数为url参数值，用开始给的url举例：</p>
+<pre><code>http://www.imooc.com/api/teacher?type=4&amp;num=3
+//num=3,num是一个参数，3是参数值，而这个接口内就规定了url中有哪些参数
+//返回Call对象 的方法 接收的参数，就是url的参数值
+</code></pre><p>那么对于这个api，我们需要写的接口应该是这样：</p>
+<pre><code>public interface ApiService {
+        @GET(&quot;teacher?type=4&quot;)
+        Call&lt;Bean&gt; getCall(@Query(&quot;num&quot;) int count);
+    }
+//这个&quot;@GET&quot;是Retrofit的注解，表示进行get请求，()括号内的字符串就是url的*参数信息*
+//那为什么&quot;&amp;num=3&quot;不见了呢？看官请看我下面...
+//-------Call&lt;Bean&gt; getCall(@Query(&quot;num&quot;) int count);-------
+//这个方法返回一个Call&lt;Bean&gt;对象，等会儿正式发起请求并获取数据就靠他了
+//对头，Bean就对应于Bean.java！因为我们需要解析json变成一个Bean实例嘛
+//(@Query(&quot;num&quot;) int count)就厉害了，他表示：
+//在@GET(&quot;teacher?type=4&quot;)之中的字符串的后面，再添加&quot;&amp;num=&quot;
+//那么num等于多少呢，这就在使用getCall方法的时候由参数int count决定了
+</code></pre><p>好了，一个进行get请求的接口就写完了，也就这么两行，太简单了！</p>
+<blockquote>
+<p>其实，在这里还有另外一种情况，如果url不是在后面&amp;添加参数，而需要指定的变量在url的路径中呢?比如github这个api：</p>
+<pre><code>https://api.github.com/users/{user}/repos
+</code></pre><p>{user}是需要查找的用户名<br><strong>这个时候接口就应该这样写：</strong></p>
+<pre><code>public interface ApiService {
+      @GET(&quot;users/{user}/repos&quot;)
+      Call&lt;Bean&gt; getCall(@Path(&quot;user&quot;) String u);
+  }
+//{user}直接理解为一个变量，这个变量的值由↓决定
+//@Path(&quot;user&quot;)表示将以上路径中的{user}变量赋值为参数u的值
+//当然切记，这里的Call&lt;Bean&gt;的Bean应该换成另外你根据API返回的json生成的bean
+</code></pre><p>以上内容，请另外尝试，与本次demo无关呀</p>
+</blockquote>
+<pre><code>什么？post请求的接口该怎么写？
+**我也不知道(/▽╲)**
+</code></pre><h3 id="接下来创建一个Retrofit实例，通过Retrofit实例创建-接口的实例"><a href="#接下来创建一个Retrofit实例，通过Retrofit实例创建-接口的实例" class="headerlink" title="接下来创建一个Retrofit实例，通过Retrofit实例创建 接口的实例"></a>接下来创建一个Retrofit实例，通过Retrofit实例创建 接口的实例</h3><pre><code>        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(&quot;http://www.imooc.com/api/&quot;)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        ApiService apiService = retrofit.create(ApiService.class);
+//机智，就是通过baseUrl补全整个url信息了！是不是上面@GET中残缺url的疑惑一下就解决了？！
+//当然在刚刚的接口中，你也可以一次性写全url，但是这样就不够灵活了！
+//----------------addConverterFactory(GsonConverterFactory.create())
+//这一句规定解析json用哪个库，这就是最开始要你导入Gson库的原因啦，咱们用Gson解析json
+//当然你也可以用其他的库解析json，比如jackson，写法是一样的，注意引入别人的库就是了
+//然后很完美的创建了一个retrofit实例，并且通过retrofit实例来创建了一个接口的实例
+</code></pre><h3 id="紧接着我们需要一个Call实例来正式的发起请求获取数据"><a href="#紧接着我们需要一个Call实例来正式的发起请求获取数据" class="headerlink" title="紧接着我们需要一个Call实例来正式的发起请求获取数据"></a>紧接着我们需要一个Call实例来正式的发起请求获取数据</h3><pre><code>//请求3条数据，最后url就拼接成了最顶上给的url，是一毛一样的
+//没错，网络请求有异常，得try/catch一下
+        Call&lt;Bean&gt; call = apiService.getCall(3);
+        try {
+            call.execute();//执行call，也就是正式发起网络请求咯！
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+</code></pre><p>那么问题来了，发起网络请求之后，我去哪儿得到数据呢！机智的我把鼠标放在”execute()”上，然后按下ctrl键：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-3573166778e36bc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="得到了call.execute()的返回值"></p>
+<p>原来call.execute()直接返回了一个<strong>请求结果</strong>，那么我们拿到这个结果来看看都有啥：</p>
+<pre><code>Response&lt;Bean&gt; response= call.execute();
+result.//看下图
+</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/4924025-1d836282a2b4617e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="result都有啥"><br>哇，这么多方法，返回的都是什么？其实一看方法名和返回类型便知，这里我们挑两个打印出来看看：</p>
+<pre><code>        try {
+            Response&lt;Bean&gt; response= call.execute();
+            Log.i(TAG, &quot;response.body()-----&gt;&quot; + response.body());
+            Log.i(TAG, &quot;response.message()-----&gt;&quot; + response.message());
+            Log.i(TAG, &quot;response.code()-----&gt;&quot; + response.code());
+            //明明打印了3个！！
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+</code></pre><h3 id="拿到返回结果之后"><a href="#拿到返回结果之后" class="headerlink" title="拿到返回结果之后"></a>拿到返回结果之后</h3><p>好的，现在<strong>所有代码如下：</strong></p>
+<pre><code>public class MainActivity extends AppCompatActivity {
+        private static final String TAG = &quot;MainActivity&quot;;
+        public interface ApiService {
+            @GET(&quot;teacher?type=4&quot;)
+            Call&lt;Bean&gt; getCall(@Query(&quot;num&quot;) int count);
+        }
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(&quot;http://www.imooc.com/api/&quot;)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            ApiService apiService = retrofit.create(ApiService.class);
+            Call&lt;Bean&gt; call = apiService.getCall(3);
+            try {
+                Response&lt;Bean&gt; response= call.execute();
+                Log.i(TAG, &quot;response.body()-----&gt;&quot; + response.body());
+                Log.i(TAG, &quot;response.message()-----&gt;&quot; + response.message());
+                Log.i(TAG, &quot;response.code()-----&gt;&quot; + response.code());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+}
+</code></pre><p>好像很完美了，马上就能收获利用retrofit发起网络请求获得数据的喜悦了！</p>
+<h3 id="来，Run起来！"><a href="#来，Run起来！" class="headerlink" title="来，Run起来！"></a>来，Run起来！</h3><p><strong>————别Run了，你的结果一定是：</strong><br><img src="http://upload-images.jianshu.io/upload_images/4924025-d9cf01b573b8d3b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="程序挂掉了啊哈哈哈哈"><br>因为你没有添加网络权限！！</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+</code></pre><p>好，这下OK了，这次我们<strong>真正的Run起来！</strong><br><img src="http://upload-images.jianshu.io/upload_images/4924025-d9cf01b573b8d3b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="程序**又**挂掉了啊哈哈哈哈哈哈我不行了"><br>报错信息：</p>
+<pre><code>//这尼玛我怎么在主线程进行网络请求了呢！！
+Caused by: android.os.NetworkOnMainThreadException
+</code></pre><p>好了，这下要<strong>真正的解决问题了！真正的所有代码MainActivity.java：</strong></p>
+<pre><code>public class MainActivity extends AppCompatActivity {
+    private static final String TAG = &quot;MainActivity&quot;;
+    public interface ApiService {
+        @GET(&quot;teacher?type=4&quot;)
+        Call&lt;Bean&gt; getCall(@Query(&quot;num&quot;) int count);
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(&quot;http://www.imooc.com/api/&quot;)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        ApiService apiService = retrofit.create(ApiService.class);
+        final Call&lt;Bean&gt; call = apiService.getCall(3);
+//----这里直接new了一个子线程来进行网络请求，看下方有一个Retrofit自带的异步请求方法
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Response&lt;Bean&gt; response= call.execute();
+                    Log.i(TAG, &quot;response.body()-----&gt;&quot; + response.body());
+                    Log.i(TAG, &quot;response.message()-----&gt;&quot; + response.message());
+                    Log.i(TAG, &quot;response.code()-----&gt;&quot; + response.code());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+//如果你选择了这种写法
+//可千万别忘了start()!不然等会儿看不到log，你又要拿起砍刀找我了！
+//-------------------------------------
+    }
+</code></pre><blockquote>
+<p><strong>Retrofit还有一个本身就是异步请求的方法：</strong></p>
+<pre><code>        //call.enqueue()方法接收一个Callback回调，我们直接new出来，这是异步请求方法
+        call.enqueue(new Callback&lt;Bean&gt;() {
+            @Override
+            public void onResponse(Call&lt;Bean&gt; call, Response&lt;Bean&gt; response) {
+                //当获取到返回结果的时候回调这个方法
+                Log.i(TAG, &quot;response.body()-----&gt;&quot; + response.body());
+                Log.i(TAG, &quot;response.message()-----&gt;&quot; + response.message());
+                Log.i(TAG, &quot;response.code()-----&gt;&quot; + response.code());
+            }
+            @Override
+            public void onFailure(Call&lt;Bean&gt; call, Throwable t) {
+                //网络请求失败的时候回调这个方法
+            }
+        });
+</code></pre><p>把上面的上面的new Thread(……).start();全部换成上面的代码，也一样OK了！</p>
+<ul>
+<li>当然<strong>更推荐这里写法</strong>了！</li>
+</ul>
+</blockquote>
+<p>好了，废话这么多，来看看log到底打印出来了一些什么吧：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-7eda56dfc8861b09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="log信息"></p>
+<p>真的太完美了，这个结果告诉我们请求码是200，请求信息是OK，还给了我一个Bean对象！<br>噢对了，看看我会不会拿到一个假的Bean对象！眼见为实</p>
+<pre><code>        ......
+            Bean b = response.body();
+            Log.i(TAG, &quot;Bean内容：&quot; + b.msg);
+            Log.i(TAG, &quot;Bean内容：&quot; + b.data.get(0).description);
+         ......
+</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/4924025-eab057db555c435c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="还好拿到了真对象"></p>
+<p><strong>好了，至此我们已经成功利用Retrofit进行网络请求，并且将得到的json直接变成了Bean对象，简直不要太爽</strong></p>
+<blockquote>
+<ul>
+<li>如果我的文章确实有帮助到你，请不要忘了点一下文末的”♡”让他变成”❤”</li>
+<li>作为新手难免很多地方理解不到位，文中若有错误请直(bu)接(yao)指(ma)出(wo)</li>
+<li>写作不易！</li>
+</ul>
+</blockquote>
+
     
 
     
@@ -384,11 +648,27 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
+        <a href="/2017/03/08/ReactNative利用Navigator实现登录跳转/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
+    
+        <a href="/2017/03/22/高仿《ONE一个》APP/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
     
 </nav>
 
@@ -612,6 +892,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 
