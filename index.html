@@ -20,6 +20,8 @@
     <meta http-equiv="x-dns-prefetch-control" content="on">
     
     
+        <link rel="dns-prefetch" href="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"/>
+    
     
     
     
@@ -144,7 +146,7 @@
 
     <style>
       body{
-        background-color: #F5F5F5;
+        background-color: #E1E1E1;
       }
 
       /* blog_info bottom background */
@@ -227,11 +229,11 @@
 <div class="mdl-card mdl-shadow--2dp daily-pic mdl-cell mdl-cell--8-col index-top-block">
 
     <!-- Pic & Slogan -->
-    <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/daily_pic.png)">
+    <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/daily_pic1.png)">
         <p class="index-top-block-slogan"><a href="#">
         
             
-                Hi, nice to meet you
+                LiuZh<br>不断踩坑的码渣
             
         
         </a></p>
@@ -302,6 +304,12 @@
                     </li>
                 </a>
             
+                <a class="index_share-link" href="/friends" title="友情链接">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        友情链接
+                    </li>
+                </a>
+            
         </ul>
 
         <!-- Menu -->
@@ -324,12 +332,6 @@
 
             
 
-            
-                <a class="index_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://liuzho.com//index.html" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        分享到 Facebook
-                    </li>
-                </a>
             
 
             
@@ -370,8 +372,8 @@
     <!-- Post Thumbnail -->
     
         
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <!-- Pure Thumbnail -->
+            <div class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#AA77FF !important">
         
     
 
@@ -431,7 +433,7 @@
 
     var locatePost = $('.locate-thumbnail-symbol').next();
     for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
+        randomNum = Math.floor(Math.random() * null + 1);
 
         locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
         locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
@@ -473,7 +475,7 @@
 
     <!-- Sidebar Email -->
     <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        qq354295878@gmail.com
+        更多地址
         <b class="caret"></b>
     </a>
 </div>
@@ -486,11 +488,47 @@
         <ul id="settings-dropdown" class="dropdown-menu">
             
                 <li>
-                    <a href="mailto: qq354295878@gmail.com" target="_blank" title="Email Me">
+                    <a href="https://github.com/liuzho" target="_blank" title="GitHub">
                         
-                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">link</i>
                         
-                        Email Me
+                        GitHub
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="#" target="_blank" title="简书">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">link</i>
+                        
+                        简书
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="#" target="_blank" title="掘金">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">link</i>
+                        
+                        掘金
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="#" target="_blank" title="SegmentFault">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">link</i>
+                        
+                        SegmentFault
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="#" target="_blank" title="CSDN">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">link</i>
+                        
+                        CSDN
                     </a>
                 </li>
             
@@ -544,6 +582,8 @@
             </ul>
         </li>
         
+            <li class="divider"></li>
+        
     
 
     <!-- Pages  -->
@@ -554,6 +594,16 @@
                     <i class="material-icons sidebar-material-icons">person</i>
                 
                 关于
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="/friends" title="友情链接">
+                
+                友情链接
             </a>
         </li>
         
@@ -726,6 +776,95 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
+    
+        <script src="/js/smoothscroll.js"></script>
+    
+
+
+
+    <!-- Leancloud -->
+    <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+    <script>
+        AV.initialize('yP7BkMPSAzmjRNPzN1kGYPc4-gzGzoHsz', 'rbsTwmf40cn4E0vJpGh5qnuR');
+    </script>
+    <script>
+    function showTime(Counter) {
+        var query = new AV.Query(Counter);
+        $('.leancloud-views_num').each(function() {
+            var url = $(this).attr('id').trim();
+            query.equalTo('url', url);
+            query.find({
+                success: function(results) {
+                    if (results.length === 0) {
+                        var content = '0 ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                        return;
+                    }
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+                        var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    }
+                },
+                error: function(object, error) {
+                    console.log('Error: ' + error.code + ' ' + error.message);
+                }
+            });
+        });
+    }
+
+    function addCount(Counter) {
+      var Counter = AV.Object.extend('Counter');
+      url = $('.leancloud-views_num').attr('id').trim();
+      title = $('.leancloud-views_num').attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo('url', url);
+      query.find({
+          success: function(results) {
+            if (results.length > 0) {
+                var counter = results[0];
+                counter.fetchWhenSave(true);
+                counter.increment('time');
+                counter.save(null, {
+                    success: function(counter) {
+                        var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    },
+                    error: function(counter, error) {
+                        console.log('Failed to save Visitor num, with error message: ' + error.message);
+                    }
+                });
+            } else {
+              var newcounter = new Counter();
+              newcounter.set('title', title);
+              newcounter.set('url', url);
+              newcounter.set('time', 1);
+              newcounter.save(null, {
+                  success: function(newcounter) {
+                      console.log('newcounter.get(\'time\')='+newcounter.get('time'));
+                      var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+                      $(document.getElementById(url)).text(content);
+                  },
+                  error: function(newcounter, error) {
+                      console.log('Failed to create');
+                  }
+              });
+            }
+        },
+        error: function(error) {
+            console.log('Error:' + error.code + ' ' + error.message);
+        }
+      });
+    }
+    $(function() {
+        var Counter = AV.Object.extend('Counter');
+        if ($('.leancloud-views_num').length === 1) {
+            addCount(Counter);
+        } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+        }
+    });
+</script>
 
 
 
