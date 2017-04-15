@@ -10,7 +10,7 @@
     
     <title>
         
-            ReactNative制作Component控件并且复用（二） | 
+            初窥Socket：与自己聊次天 | 
         
         LiuZh
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="LiuZh">
     <meta name="description" content="大三狗一枚，求安卓开发实习ing...">
-    <meta name="keywords" content="null,ReactNative,Component">
+    <meta name="keywords" content="null,Android,Socket,Android网络编程">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -62,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://liuzho.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="ReactNative制作Component控件并且复用（二） | LiuZh">
+    <meta property="og:title" content="初窥Socket：与自己聊次天 | LiuZh">
     <meta property="og:description" content="大三狗一枚，求安卓开发实习ing...">
-    <meta property="og:article:tag" content="ReactNative"> <meta property="og:article:tag" content="Component"> 
+    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Socket"> <meta property="og:article:tag" content="Android网络编程"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -251,7 +251,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是Socket"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是Socket</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#本次Demo预览"><span class="post-toc-number">2.</span> <span class="post-toc-text">本次Demo预览</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#工具准备"><span class="post-toc-number">3.</span> <span class="post-toc-text">工具准备</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#服务端"><span class="post-toc-number">4.</span> <span class="post-toc-text">服务端</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#客户端（Android）"><span class="post-toc-number">5.</span> <span class="post-toc-text">客户端（Android）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#跑起来"><span class="post-toc-number">6.</span> <span class="post-toc-text">跑起来</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#跑服务端程序"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">跑服务端程序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#跑客户端程序"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">跑客户端程序</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#改进一个不足"><span class="post-toc-number">7.</span> <span class="post-toc-text">改进一个不足</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#源码"><span class="post-toc-number">8.</span> <span class="post-toc-text">源码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结语"><span class="post-toc-number">9.</span> <span class="post-toc-text">结语</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -281,7 +281,7 @@
         
     
             <p class="article-headline-p">
-                ReactNative制作Component控件并且复用（二）
+                初窥Socket：与自己聊次天
             </p>
         </div>
 
@@ -300,7 +300,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>LiuZh</strong>
-        <span>2月 27, 2017</span>
+        <span>4月 15, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -324,7 +324,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Component/">Component</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/ReactNative/">ReactNative</a>
+        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Android网络编程/">Android网络编程</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Socket/">Socket</a>
     </ul>
     
 
@@ -338,7 +338,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/2017/02/27/ReactNative制作Component控件并且复用（二）/" class="leancloud-views_num" data-flag-title="ReactNative制作Component控件并且复用（二）">
+                <span id="/2017/04/15/初窥Socket：与自己聊次天/" class="leancloud-views_num" data-flag-title="初窥Socket：与自己聊次天">
      &nbsp;浏览量
 </span>
 
@@ -352,7 +352,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=ReactNative制作Component控件并且复用（二）&url=https://liuzho.com//2017/02/27/ReactNative制作Component控件并且复用（二）/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=初窥Socket：与自己聊次天&url=https://liuzho.com//2017/04/15/初窥Socket：与自己聊次天/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -367,7 +367,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://liuzho.com//2017/02/27/ReactNative制作Component控件并且复用（二）/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://liuzho.com//2017/04/15/初窥Socket：与自己聊次天/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -379,7 +379,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=LiuZh&title=ReactNative制作Component控件并且复用（二）&summary=大三狗一枚，求安卓开发实习ing...&pics=https://liuzho.com/img/favicon.png&url=https://liuzho.com/2017/02/27/ReactNative制作Component控件并且复用（二）/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=LiuZh&title=初窥Socket：与自己聊次天&summary=大三狗一枚，求安卓开发实习ing...&pics=https://liuzho.com/img/favicon.png&url=https://liuzho.com/2017/04/15/初窥Socket：与自己聊次天/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -397,235 +397,338 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>在上一篇博客《ReactNative制作Component控件并且复用（一）》中简单介绍了一下如何定义一个可复用的控件，并且引用他。这篇博客继续上一篇，介绍怎样在使用自定义控件的时候传递数据、设置样式等一些问题。OK 开始吧：</p>
-<p>刚刚我们制作了一个长得还算过得去的Button：<br><img src="http://upload-images.jianshu.io/upload_images/4924025-cbf1e7d38ed35f18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="长得还行的button"><br>接着提出了这样一个疑问：不可能我所有的按钮都叫确认、背景颜色都是绿色、文本都是白色、都长这个体型吧……</p>
-<p>当然了，这个时候第一个想到的就是给他设置样式！好，那接下来写一个style并且设置给button</p>
-<p>先加一个叫button的样式，暂时就先改个背景颜色吧：【index.android.js】</p>
-<pre><code>const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: &#39;center&#39;,
-    alignItems: &#39;center&#39;,
-  },
-  button: {
-    backgroundColor: &#39;#f00&#39;,//红色背景
-  }
-});
-</code></pre><p>接下来给Button设置style：</p>
-<pre><code>return (
-  &lt;View 
-    style = { styles.container }&gt;
-    {/*通过import引入了Button控件后，就可以像下面这样直接使用这个控件*/}
-    &lt;Button
-      style = { styles.button }&gt;
-    &lt;/Button&gt;
-  &lt;/View&gt;
-);
-</code></pre><p>这样是不是就给Button换了一下背景颜色呢？先看一下吧，double r：<br><img src="http://upload-images.jianshu.io/upload_images/4924025-cbf1e7d38ed35f18.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="还是那个长得还行的button"><br>我去，怎么没变化呀？那我设置宽高等其他属性再试试！（你尽管试，能起作用算我输，我就不试了…）</p>
-<p>那么，这个按钮的样式到底要怎么控制呢？还记得在【Button.js】中写的样式吗？来回顾一下：</p>
-<pre><code>/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+        <h2 id="什么是Socket"><a href="#什么是Socket" class="headerlink" title="什么是Socket"></a>什么是Socket</h2><p>网络上的两个程序通过一个双向的通讯连接实现数据的交换，这个双向链路的一端称为一个Socket。Socket通常用来实现客户方和服务方的连接。Socket是TCP/IP协议的一个十分流行的编程界面，一个Socket由一个IP地址和一个端口号唯一确定</p>
+<p>但是，Socket所支持的协议种类不仅TCP/IP一种，因此两者之间是没有必然联系的。在Java环境下，Socket编程主要是指基于TCP/IP协议的网络编程</p>
+<p>PS：虽然凑字数这种技能早就点满了，但关于更多Socket及TCP/IP相关概念，还请各位看官自行/先行了解，这里不再多做赘述</p>
+<h2 id="本次Demo预览"><a href="#本次Demo预览" class="headerlink" title="本次Demo预览"></a>本次Demo预览</h2><p><img src="http://upload-images.jianshu.io/upload_images/4924025-30476f1bf842220e.gif?imageMogr2/auto-orient/strip" alt="eclispe.gif"></p>
+<h2 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h2><ol>
+<li>Eclipse（若你没有Eclipse也没事儿，后边告诉你用命令行编译运行！）</li>
+<li>AndroidStudio（若你本身就是用Eclipse开发安卓程序，那Eclipse就够了）</li>
+</ol>
+<h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><p>OK，话不多说，开干</p>
+<p>首先在Eclipse新建一个Java项目，就叫SocketDemo吧</p>
+<p>接下来咱们要监听是否有客户端发送连接请求，如果有，则连接并处理</p>
+<p><code>SocketDemo.java:</code></p>
+<pre><code>public class SocketDemo {
+    /**
+     * 端口号 注意：0~1023为系统所保留端口号，选择端口号时应大于1023，具体随便你取
+     */
+    public static int PORT = 2345;
 
-import React, { Component } from &#39;react&#39;;
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from &#39;react-native&#39;;
-
-export default class Button extends Component {
-  render() {
-    return (
-        &lt;TouchableOpacity 
-          style={styles.button}&gt;
-          &lt;Text 
-            style={ styles.btText }&gt; 
-            {&quot;确认&quot;} 
-          &lt;/Text&gt;
-        &lt;/TouchableOpacity&gt;
-    );
-  }
+    public static void main(String[] args) {
+        try {
+            //serverSocket用于监听是否有客户端发送连接请求
+            ServerSocket serverSocket = new ServerSocket(PORT);
+            System.out.println(&quot;服务启动...&quot;);
+            //serverSocket.accept()：如果有客户端发送连接请求，
+            //则返回一个socket供处理与客户端的连接，否则一直阻塞监听
+            Socket socket = serverSocket.accept();
+            System.out.println(&quot;与客户端连接成功...&quot;);
+            //这个MySocket是啥呢？是一个对socket的封装，方便操作
+            MySocket mySocket = new MySocket(socket);
+            //由于MySocket继承于Thread，所以需要start()一下
+            //致于为啥要继承于Thread来封装socket，请看下方 MySocket类
+            mySocket.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
+</code></pre><p>注释中的两个问题，很好理解，不多说，直接看看MySocket是怎么写的吧：</p>
+<p><code>MySocket.java</code></p>
+<pre><code>public class MySocket extends Thread {
+    Socket mSocket;
+    BufferedWriter mWriter;
+    BufferedReader mReader;
 
-const styles = StyleSheet.create({
-  button: {
-    height: 30,
-    width: 200,
-    backgroundColor: &#39;#0f0&#39;,
-    borderRadius: 10,
-    justifyContent: &#39;center&#39;,
-    alignItems: &#39;center&#39;,
-  },
-  btText: {
-    color: &#39;#fff&#39;,
-    fontSize: 16,
-  },
-});
-</code></pre><p>看见了吧，按钮的样式是【Button.js】里<code>&lt;TouchableOpacity&gt;</code>的style控制的，文本的样式在在<text>的style控制的！</text></p>
-<p>那难道每需要一个按钮都要新建一个【XXButon.js】来满足不同地方的需求？当然不是啦，还记得Props（属性）吗？<a href="http://reactnative.cn/docs/0.41/props.html#content" target="_blank" rel="external">props文档</a>，这个得会才能往下看噢。</p>
-<p>既然可以通过props传递数据，那么我当然可以在【index.andorid.js】中通过<code>&lt;Button&gt;</code>的props传递数据！再来看一遍刚刚写的：</p>
-<pre><code>&lt;Button
-  style = { styles.button }&gt;
-&lt;/Button&gt;
-</code></pre><p>咦，这不就是相当于给<code>&lt;Button&gt;</code>的props.style设定了一个值（样式对象）吗？可是这个值在哪儿接收呢？当然是在定义这个控件的地方了：【Button.js】！这样的话，就能在【Button.js】中取到这个”styles.button”，将他设置给<touchableopacity>就行了。机智！马上来一发：【Button.js】</touchableopacity></p>
-<pre><code>……
-return (
-  &lt;TouchableOpacity 
-    style={this.props.style}&gt;
-      &lt;Text 
-        style={ styles.btText }&gt; 
-        {&quot;确认&quot;} 
-      &lt;/Text&gt;
-  &lt;/TouchableOpacity&gt;
-);
-……
-</code></pre><p>来，double r：<br><img src="http://upload-images.jianshu.io/upload_images/4924025-13e9d32dee3c806c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="通过&lt;Button&gt;的props改变了背景色的button"><br>哇66666背景色成功设置！等会儿……为什么宽高和圆角不见了？？what？？回头看下代码，噢，原来<touchableopacity>设置了style={this.props.style}，而这个style是从调用这个button的地方传来的，我们刚刚只设置了backgroundColor，所以只有背景色一个样式……好，那返回【index.android.js】给这个按钮修改一下样式：</touchableopacity></p>
-<pre><code>……
-  button: {
-    backgroundColor: &#39;#f00&#39;,
-    width: 100,
-    height: 50,
-    borderRadius: 10,
-  }
-……
-</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/4924025-2ef9578f88c836a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="通过&lt;Button&gt;的props设置了样式的buttn"><br>额……好吧，有点小尴尬，文本没居中……那继续写样式？？我的天，这样的话，每次使用<code>&lt;Button&gt;</code>都要写文本居中的代码？！</p>
-<p>诶，有了：给Button设置一个默认的样式，每次引用的时候我只修改我需要修改的某几个样式属性，这样不就OK了？行，敲起来【Button.js】：</p>
-<pre><code>&lt;TouchableOpacity 
-  style={[styles.button,this.props.style]}&gt;
-  &lt;Text 
-    style={ styles.btText }&gt; 
-     {&quot;确认&quot;} 
-  &lt;/Text&gt;
-&lt;/TouchableOpacity&gt;
-</code></pre><p>发现没，style还可以这样赋值！赋一个样式对象数组！原来这样写的作用是取两个样式对象的合集，而写在前面的样式对象(styles.button)的属性，会被写在后面的样式对象(this.props.style)的同名属性覆盖，这样说可能太抽象了，拿这个例子来说：</p>
-<p>styles.button（这段代码在【Button.js】中）是这样的：</p>
-<pre><code>  button: {
-    height: 30,
-    width: 200,
-    backgroundColor: &#39;#0f0&#39;,
-    borderRadius: 10,
-    justifyContent: &#39;center&#39;,
-    alignItems: &#39;center&#39;,
-  }
-</code></pre><p>this.props.style（这段代码在【index.android.js】中）是这样的：</p>
-<pre><code>  button: {
-    backgroundColor: &#39;#f00&#39;,
-    width: 100,
-    height: 50,
-    borderRadius: 10,
-  }
-</code></pre><p>这两个样式对象[合并]后应该是这样的：</p>
-<pre><code>{
-    height: 30,// styles.button特有
-    width: 200,// styles.button特有
-    backgroundColor: ‘#f00’,//两个都有，但是值会取后面的！前者会被后者覆盖！
-    borderRadius: 10,//这个其实也是被覆盖，只是两个都写了10而已，你可以试试把其中任意一个10换成其他的，看看效果
-    justifyContent: ‘center’,// styles.button特有
-    alignItems: ‘center’// styles.button特有
+    public MySocket(Socket socket) {
+        this.mSocket = socket;
+        try {
+            mWriter = new BufferedWriter(new OutputStreamWriter(
+                        socket.getOutputStream(), &quot;utf-8&quot;));
+            mReader = new BufferedReader(new InputStreamReader(
+                        socket.getInputStream(), &quot;utf-8&quot;));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+    * 向客户端发送消息
+    * msg 发送消息内容
+    **/
+    public void send(String msg) {
+        try {
+            // 客户端按行(readLine)读取消息，所以每条消息最后必须加换行符 \n,否则读取不到
+            mWriter.write(msg + &quot;\n&quot;);
+            mWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+    * 
+    * 不断读取来自客户端的消息，一旦收到消息，则自动回复
+    **/
+    @Override
+    public void run() {
+        super.run();
+        try {
+            String line;
+            //服务端按行读取消息
+            //不断按行读取，获得来自客户端的消息
+            while ((line = mReader.readLine()) != null) {
+                System.out.println(&quot;客户端消息：&quot; + line);
+                //收到客户端消息后，自动回复
+                send(&quot;已经收到你发送的\&quot;&quot; + line + &quot;\&quot;&quot;);
+            }
+            mReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(&quot;end&quot;);
+    }
 }
-</code></pre><p>当然了，如果是this.props.style中特有的属性，肯定也是会出现在合并后的样式中的(合集/并集嘛)。本例中，this.props.style中的borderRadius其实可以不用写，因为默认样式（styles.button）已经设置了</p>
-<p>说了这么多，看下这样写的效果到底是怎么样的吧：double r</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4924025-b4cdfdada16a8568.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="比较完美的button"><br>OK，近乎完美！</p>
-<p>那接下来，”设定文本内容和文本样式”的过程就不多说了，都是一样的，直接甩上所有代码！：（注意代码中写的onPress事件触发的函数也是一样通过这个方法传递的！可以自己分析并优化一下代码！）<br>【index.android.js】:</p>
-<pre><code>import React, { Component } from &#39;react&#39;;
-import {
-  AppRegistry,
-  StyleSheet,
-  View,
-} from &#39;react-native&#39;;
+</code></pre><p>看完MySocket之后豁然开朗，原来将读取客户端消息的操作是阻塞的，要放在子线程来做，所以继承于Thread会方便一点</p>
+<p>那么至此，服务端的程序已经写完了</p>
+<p>什么？你问怎么这么简单？！原因有两个：</p>
+<ol>
+<li>这只是一个基础的Socket服务端程序，不用考虑那么多其他情况，自然几行代码就搞定了</li>
+<li>没错，Socket就是这么简单！</li>
+</ol>
+<p>接下来你会发现，客户端特么更简单！</p>
+<h2 id="客户端（Android）"><a href="#客户端（Android）" class="headerlink" title="客户端（Android）"></a>客户端（Android）</h2><p>第一步新建一个安卓项目，也叫SocketDemo吧，毕竟，凑字数这个技能我比较熟练</p>
+<p>简单一点，布局中就一个按钮(id=btn_send)，用来发送消息，初窥嘛，简单就是王道，布局代码就不上了</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-4953124daa37dad6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="安卓样式.png"></p>
+<p>接下来看看MainActivity的代码：</p>
+<p>不行，在看MainActivity之前还有一些话要交代清楚：</p>
+<ol>
+<li>如果你将安卓程序跑在电脑的虚拟机上，则你访问的IP地址为：10.0.2.2（虚拟机只能通过这个IP访问电脑）</li>
+<li>如果你将安卓程序跑在真机上，那么你需要在CMD中输入ipconfig获取到IPv4地址，并且确保手机和电脑在同一个网络下（连接了同一个WIFI）</li>
+</ol>
+<pre><code>public class MainActivity extends AppCompatActivity {
+    private static final String TAG = &quot;MainActivity&quot;;
 
-// 注意了！！就是这句话把刚刚写的Button.js引入使用！
-// 导入 Button 从 &#39;./component/Button&#39;（Buton.js文件的路径） 
-// ----最后Button不需要写成Button.js
-import Button from &#39;./component/Button&#39;;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        connectServer();
+        findViewById(R.id.btn_send).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendMsg(&quot;2333&quot;);
+            }
+        });
+    }
 
-export default class button extends Component {
-  render() {
+    private Socket mSocket;
+    private BufferedWriter mWriter;
+    private BufferedReader mReader;
+    //这个IP上面解释过了噢，要理解一下
+    private static String IP = &quot;10.0.2.2&quot;;
+    //切记端口号一定要和服务端保持一致！
+    private static int PORT = 2345;
 
-    return (
-      &lt;View 
-        style = { styles.container }&gt;
-        &lt;Button
-          style = { styles.button }
-          {/*通过textStyle属性传递了文本样式*/}
-          textStyle = { styles.txStyle }
-          {/*通过text属性传递了文本内容*/}
-          text = {&quot;引用设置&quot;}
-          {/*通过onPress属性传递了一个弹窗函数*/}
-          onPress = { () =&gt; {alert(&quot;你点击了按钮&quot;);} }&gt;
-        &lt;/Button&gt;
-      &lt;/View&gt;
-    );
-  }
+    private void connectServer() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    mSocket = new Socket(IP, PORT);
+                    mWriter = new BufferedWriter(new OutputStreamWriter(
+                            mSocket.getOutputStream(), &quot;utf-8&quot;));
+                    mReader = new BufferedReader(new InputStreamReader(
+                            mSocket.getInputStream(), &quot;utf-8&quot;));
+                    Log.i(TAG, &quot;连接服务端成功&quot;);
+                } catch (IOException e) {
+                    Log.i(TAG, &quot;连接服务端失败&quot;);
+                    e.printStackTrace();
+                    return;
+                }
+
+                try {
+                    String line;
+                    while ((line = mReader.readLine()) != null) {
+                        Log.i(TAG, &quot;服务端消息: &quot; + line);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.i(TAG, &quot;服务端：已停止服务&quot;);
+                }
+            }
+        }).start();
+    }
+
+    private void sendMsg(String msg) {
+        // 如果mSocket为null有可能两种情况：
+        // 1.还在尝试连接服务端
+        // 2.连接失败
+        if (mSocket == null){
+            Toast.makeText(this,&quot;连接未完成或连接失败，无法发送消息！&quot;,Toast.LENGTH_SHORT).show();
+            return;
+        }
+        try {
+            //服务端是按行读取消息，所以每条消息最后必须加换行符 \n
+            mWriter.write(msg + &quot;\n&quot;);
+            mWriter.flush();
+        } catch (IOException e) {
+            Toast.makeText(this,&quot;发送失败：服务端已关闭服务！&quot;,Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
+
 }
+</code></pre><p>这就写完了客户端？？对，这就写完了…那你别问为啥Socket咋就这么点内容，Socket本来也不是啥难点~</p>
+<p>并且，这只是一个非常非常基础的Demo</p>
+<p>OK，到这里就可以来跑一下程序试一试了</p>
+<h2 id="跑起来"><a href="#跑起来" class="headerlink" title="跑起来"></a>跑起来</h2><h3 id="跑服务端程序"><a href="#跑服务端程序" class="headerlink" title="跑服务端程序"></a>跑服务端程序</h3><ul>
+<li>如果你有Eclipse，那么直接在Eclipse内跑起来就行了！</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-89a5de23ea6863a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Eclipse跑服务端程序.png"></p>
+<ul>
+<li><p>如果很不巧，你没有Eclipse</p>
+<ol>
+<li>新建本文章服务端部分的<code>SocketDemo.java</code>和<code>MySocket.java</code>两个文件，并且放在同一个文件夹下，上面代码没有写出import包，不能直接copy进文件内用，文末我会放出所有源代码，到文末copy一下放在两个文件内就行了（当然你得确保你有JDK环境！虽然作为安卓狗，这是必要的，但还是提醒一下！）</li>
+<li>打开CMD，切换进入上述两个文件所在的目录<br><img src="http://upload-images.jianshu.io/upload_images/4924025-9fb9ab3bc9e8291a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="java文件目录.png"></li>
+<li>执行<pre><code>javac *.java
+java SocketDemo
+</code></pre>就将程序跑起来了（ctrl+c退出程序）<br><img src="http://upload-images.jianshu.io/upload_images/4924025-73c1d74c2ffdd41f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CMD运行服务端程序.png"></li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>注意事项：<ol>
+<li>在Eclipse内运行的程序，切记：如果修改内容后要重新启动程序，请先将正在运行的程序关闭，否则将一直占用端口！无法再以此端口再次启用一次程序！</li>
+<li>如果用CMD运行的程序，提示编码错误，请将所有中文替换成英文，或者将两个.java文件内容转换成GBK编码(建议换成英文！英文好的哥们儿，上！)</li>
+</ol>
+</li>
+</ul>
+<h3 id="跑客户端程序"><a href="#跑客户端程序" class="headerlink" title="跑客户端程序"></a>跑客户端程序</h3><p>直接跑安卓程序就行了！</p>
+<p>在Eclipse跑服务端的图已经在文首放出，这里放一个CMD下跑服务端的图片：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4924025-71d0e19fc79b44e1.gif?imageMogr2/auto-orient/strip" alt="cmd.gif"></p>
+<blockquote>
+<p>注：不知为什么发送消息的时候，命令行及LogCat不会即时显示出内容，在我ctrl+c退出程序之后才会一次全出来，若有知道的朋友，还望指教！万分感谢！</p>
+</blockquote>
+<h2 id="改进一个不足"><a href="#改进一个不足" class="headerlink" title="改进一个不足"></a>改进一个不足</h2><p>想一下，服务端程序只响应一个客户端，如果又有客户端发出连接请求，那岂不是无法响应了！</p>
+<p>再想一下觉得不对，也就是我自己测试，哪来的第二个客户端发出连接请求</p>
+<p>再再想一下，如果你改了一下安卓端的代码，又一次点了运行，那谁来响应你？！这样的话，因为修改安卓端代码，又得去把服务端的程序停了，再启动一下，多麻烦！</p>
+<p>好吧，既然分析了确实有这个麻烦，那就把它解决掉：</p>
+<pre><code>public class SocketDemo {
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: &#39;center&#39;,
-    alignItems: &#39;center&#39;,
-  },
-  button: {
-    backgroundColor: &#39;#f00&#39;,
-    width: 100,
-    height: 50,
-  },
-  txStyle: {
-    color: &#39;#00f&#39;,
-    fontSize: 20,
-  }
-});
+    public static int PORT = 2745;
 
-AppRegistry.registerComponent(&#39;button&#39;, () =&gt; button);
-</code></pre><p>【Button.js】：</p>
-<pre><code>import React, { Component } from &#39;react&#39;;
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from &#39;react-native&#39;;
-
-// 这里特别注意 export default 关键字，只有加上关键字才能在其他文件引用本文件
-// 注意class Button 是大写，与Button.js保持一致
-export default class Button extends Component {
-  render() {
-    return (
-        &lt;TouchableOpacity 
-          style={[styles.button,this.props.style]}
-          // 将接收到的onPress（即this.props.onPress)设置给TouchableOpacity的onPress
-          onPress={this.props.onPress}&gt;
-          &lt;Text 
-            // 设置文本样式
-            style={ [styles.btText,this.props.textStyle] }&gt; 
-            {/*设置文本内容*/}
-            {this.props.text} 
-          &lt;/Text&gt;
-        &lt;/TouchableOpacity&gt;
-    );
-  }
+    public static void main(String[] args) {
+        try {
+            ServerSocket serverSocket = new ServerSocket(PORT);
+            System.out.println(&quot;服务启动...&quot;);
+            //写一个死循环，如果有一个客户端连接成功，那么继续让serverSocket.accept()阻塞住
+            //等待下一个客户端请求，这样不论有多少个客户端请求过来，都可以响应到，
+            //结束调试的时候再关闭服务端程序
+            while (true) {
+                Socket socket = serverSocket.accept();
+                System.out.println(&quot;客户端连接成功...&quot;);
+                MySocket mySocket = new MySocket(socket);
+                mySocket.start();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
+</code></pre><p>so easy~不解释了~</p>
+<p>至此整个SocketDemo就完成了，对Socket的第一步已经迈出了，那么赶紧理解好，然后再深入Socket吧！</p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><ul>
+<li>SocketDemo.java：</li>
+</ul>
+<pre><code>import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 
-const styles = StyleSheet.create({
-  // button默认样式
-  button: {
-    height: 30,
-    width: 200,
-    backgroundColor: &#39;#0f0&#39;,
-    borderRadius: 10,
-    justifyContent: &#39;center&#39;,
-    alignItems: &#39;center&#39;,
-  },
-  // 文本内容默认样式
-  btText: {
-    color: &#39;#fff&#39;,
-    fontSize: 16,
-  },
-});
-</code></pre><p>完成效果是这样的：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4924025-be84129c67a6faba.gif?imageMogr2/auto-orient/strip" alt="一个完美的button"></p>
+public class SocketDemo {
+
+    public static int PORT = 2745;
+
+    public static void main(String[] args) {
+        try {
+            ServerSocket serverSocket = new ServerSocket(PORT);
+            System.out.println(&quot;服务启动...&quot;);
+            while (true) {
+                Socket socket = serverSocket.accept();
+                System.out.println(&quot;客户端连接成功...&quot;);
+                MySocket mySocket = new MySocket(socket);
+                mySocket.start();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre><ul>
+<li>MySocket.java:</li>
+</ul>
+<pre><code>import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+
+public class MySocket extends Thread {
+    Socket mSocket;
+    BufferedWriter mWriter;
+    BufferedReader mReader;
+
+    public MySocket(Socket socket) {
+        this.mSocket = socket;
+        try {
+            mWriter = new BufferedWriter(new OutputStreamWriter(
+                        socket.getOutputStream(), &quot;utf-8&quot;));
+            mReader = new BufferedReader(new InputStreamReader(
+                        socket.getInputStream(), &quot;utf-8&quot;));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void send(String msg) {
+        try {
+            mWriter.write(msg + &quot;\n&quot;);
+            mWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void run() {
+        super.run();
+        try {
+            String line;
+            while ((line = mReader.readLine()) != null) {
+                System.out.println(&quot;客户端消息：&quot; + line);
+                send(&quot;收到:\&quot;&quot; + line + &quot;\&quot;&quot;);
+            }
+            mReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(&quot;end&quot;);
+    }
+}
+</code></pre><ul>
+<li>客户端（安卓端）的我就不放了！</li>
+</ul>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><blockquote>
+<ul>
+<li>更多内容欢迎访问<a href="https://liuzho.com"><strong>我的主页</strong></a>或<a href="https://liuzho.github.io" target="_blank" rel="external"><strong>我的博客</strong></a></li>
+<li>如果我的文章确实有帮助到你，请不要忘了点一下文末的”♡”让他变成”❤”</li>
+<li>作为新手难免很多地方理解不到位，文中若有错误请直(bu)接(yao)指(ma)出(wo)</li>
+<li>写作不易！</li>
+<li>致于题目叫”与自己聊次天”，我想解释一</li>
+</ul>
+</blockquote>
 
     
 
@@ -652,7 +755,7 @@ const styles = StyleSheet.create({
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/02/27/ReactNative制作Component控件并且复用（一）/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/03/22/高仿《ONE一个》APP/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -665,14 +768,6 @@ const styles = StyleSheet.create({
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
-    
-        <a href="/2017/03/02/ReactNative网络fetch数据并展示在listview中/" id="post_nav-older" class="next-content">
-            旧篇
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_forward</i>
-            </button>
-        </a>
     
 </nav>
 
