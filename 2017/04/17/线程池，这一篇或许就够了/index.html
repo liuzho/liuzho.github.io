@@ -10,7 +10,7 @@
     
     <title>
         
-            向Retrofit打响第一炮 | 
+            线程池，这一篇或许就够了 | 
         
         LiuZh
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="LiuZh">
     <meta name="description" content="大三狗一枚，求安卓开发实习ing...">
-    <meta name="keywords" content="null,Android,Retrofit">
+    <meta name="keywords" content="null,Android,线程池,ThreadPoolExecutor,Executor">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -62,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://liuzho.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="向Retrofit打响第一炮 | LiuZh">
+    <meta property="og:title" content="线程池，这一篇或许就够了 | LiuZh">
     <meta property="og:description" content="大三狗一枚，求安卓开发实习ing...">
-    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Retrofit"> 
+    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="线程池"> <meta property="og:article:tag" content="ThreadPoolExecutor"> <meta property="og:article:tag" content="Executor"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -251,7 +251,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#正文开始"><span class="post-toc-number">1.</span> <span class="post-toc-text">正文开始</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Retrofit是啥？"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Retrofit是啥？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正式开始使用Retrofit"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">正式开始使用Retrofit</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#首先需要写一个接口"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">首先需要写一个接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#接下来创建一个Retrofit实例，通过Retrofit实例创建-接口的实例"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">接下来创建一个Retrofit实例，通过Retrofit实例创建 接口的实例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#紧接着我们需要一个Call实例来正式的发起请求获取数据"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">紧接着我们需要一个Call实例来正式的发起请求获取数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拿到返回结果之后"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">拿到返回结果之后</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#来，Run起来！"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">来，Run起来！</span></a></li></ol></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为什么用线程池"><span class="post-toc-number">1.</span> <span class="post-toc-text">为什么用线程池</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#线程池ThreadPoolExecutor"><span class="post-toc-number">2.</span> <span class="post-toc-text">线程池ThreadPoolExecutor</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ThreadPoolExecutor提供了四个构造函数"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">ThreadPoolExecutor提供了四个构造函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#向ThreadPoolExecutor添加任务"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">向ThreadPoolExecutor添加任务</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ThreadPoolExecutor的策略"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">ThreadPoolExecutor的策略</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常见四种线程池"><span class="post-toc-number">3.</span> <span class="post-toc-text">常见四种线程池</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CachedThreadPool"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">CachedThreadPool()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FixedThreadPool"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">FixedThreadPool()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ScheduledThreadPool"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">ScheduledThreadPool()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SingleThreadExecutor"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">SingleThreadExecutor()</span></a></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -281,7 +281,7 @@
         
     
             <p class="article-headline-p">
-                向Retrofit打响第一炮
+                线程池，这一篇或许就够了
             </p>
         </div>
 
@@ -300,7 +300,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>LiuZh</strong>
-        <span>3月 18, 2017</span>
+        <span>4月 17, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -324,7 +324,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Retrofit/">Retrofit</a>
+        <a class="post_tag-link" href="/tags/Android/">Android</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Executor/">Executor</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/ThreadPoolExecutor/">ThreadPoolExecutor</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/线程池/">线程池</a>
     </ul>
     
 
@@ -338,7 +338,7 @@
     <!-- Leancloud Views -->
         <a class="post_share-link" href="#">
             <li class="mdl-menu__item">
-                <span id="/2017/03/18/向Retrofit打响第一炮/" class="leancloud-views_num" data-flag-title="向Retrofit打响第一炮">
+                <span id="/2017/04/17/线程池，这一篇或许就够了/" class="leancloud-views_num" data-flag-title="线程池，这一篇或许就够了">
      &nbsp;浏览量
 </span>
 
@@ -352,7 +352,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=向Retrofit打响第一炮&url=https://liuzho.com//2017/03/18/向Retrofit打响第一炮/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=线程池，这一篇或许就够了&url=https://liuzho.com//2017/04/17/线程池，这一篇或许就够了/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -367,7 +367,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://liuzho.com//2017/03/18/向Retrofit打响第一炮/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://liuzho.com//2017/04/17/线程池，这一篇或许就够了/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -379,7 +379,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=LiuZh&title=向Retrofit打响第一炮&summary=大三狗一枚，求安卓开发实习ing...&pics=https://liuzho.com/img/favicon.png&url=https://liuzho.com/2017/03/18/向Retrofit打响第一炮/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=LiuZh&title=线程池，这一篇或许就够了&summary=大三狗一枚，求安卓开发实习ing...&pics=https://liuzho.com/img/favicon.png&url=https://liuzho.com/2017/04/17/线程池，这一篇或许就够了/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -397,234 +397,229 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <blockquote>
-<p><strong>废话：</strong><br>强行开启了Retrofit的学习模式，但是发现啊，我找到的一些入门文章，简直不要太坑，敲不出来demo不要紧啊，你得讲的让我看懂吧？好，有一篇能看懂的了，喂能不能讲完啊，讲一半死球了不做完一套demo几个意思！</p>
-</blockquote>
-<p>OK既然没有好的Retrofit第一炮的文章，那么我的机会就来了</p>
+        <h2 id="为什么用线程池"><a href="#为什么用线程池" class="headerlink" title="为什么用线程池"></a>为什么用线程池</h2><ol>
+<li><p>创建/销毁线程伴随着系统开销，过于频繁的创建/销毁线程，会很大程度上影响处理效率</p>
 <blockquote>
-<p>看完本文并且do it你将收获</p>
+<p>例如：</p>
+<p>记创建线程消耗时间T1，执行任务消耗时间T2，销毁线程消耗时间T3</p>
+<p>如果T1+T3&gt;T2，那么是不是说开启一个线程来执行这个任务太不划算了！</p>
+<p>正好，线程池缓存线程，可用已有的闲置线程来执行新任务，避免了T1+T3带来的系统开销</p>
+</blockquote>
+</li>
+<li><p>线程并发数量过多，抢占系统资源从而导致阻塞</p>
+<blockquote>
+<p>我们知道线程能共享系统资源，如果同时执行的线程过多，就有可能导致系统资源不足而产生阻塞的情况</p>
+<p>运用线程池能有效的控制线程最大并发数，避免以上的问题</p>
+</blockquote>
+</li>
+<li><p>对线程进行一些简单的管理</p>
+<blockquote>
+<p>比如：延时执行、定时循环执行的策略等</p>
+<p>运用线程池都能进行很好的实现</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="线程池ThreadPoolExecutor"><a href="#线程池ThreadPoolExecutor" class="headerlink" title="线程池ThreadPoolExecutor"></a>线程池ThreadPoolExecutor</h2><p>既然Android中线程池来自于Java，那么研究Android线程池其实也可以说是研究Java中的线程池</p>
+<p>在Java中，线程池的概念是Executor这个接口，具体实现为ThreadPoolExecutor类，学习Java中的线程池，就可以直接学习他了</p>
+<p>对线程池的配置，就是对ThreadPoolExecutor构造函数的参数的配置，既然这些参数这么重要，就来看看构造函数的各个参数吧</p>
+<h3 id="ThreadPoolExecutor提供了四个构造函数"><a href="#ThreadPoolExecutor提供了四个构造函数" class="headerlink" title="ThreadPoolExecutor提供了四个构造函数"></a>ThreadPoolExecutor提供了四个构造函数</h3><pre><code>
+//五个参数的构造函数
+public ThreadPoolExecutor(int corePoolSize,
+                          int maximumPoolSize,
+                          long keepAliveTime,
+                          TimeUnit unit,
+                          BlockingQueue&lt;Runnable&gt; workQueue)
+
+//六个参数的构造函数-1
+public ThreadPoolExecutor(int corePoolSize,
+                          int maximumPoolSize,
+                          long keepAliveTime,
+                          TimeUnit unit,
+                          BlockingQueue&lt;Runnable&gt; workQueue,
+                          ThreadFactory threadFactory)
+
+//六个参数的构造函数-2
+public ThreadPoolExecutor(int corePoolSize,
+                          int maximumPoolSize,
+                          long keepAliveTime,
+                          TimeUnit unit,
+                          BlockingQueue&lt;Runnable&gt; workQueue,
+                          RejectedExecutionHandler handler)
+
+//七个参数的构造函数
+public ThreadPoolExecutor(int corePoolSize,
+                          int maximumPoolSize,
+                          long keepAliveTime,
+                          TimeUnit unit,
+                          BlockingQueue&lt;Runnable&gt; workQueue,
+                          ThreadFactory threadFactory,
+                          RejectedExecutionHandler handler)
+</code></pre><p><strong>我知道你看到这些构造函数和我一样也是吓呆了，但其实一共就7种类型，理解起来简直和理解一周有7天一样简单，而且一周有两天是周末，其实也就只有5天需要了解！相信我，毕竟扯皮，我比较擅长</strong></p>
+<ul>
+<li><p><strong>int corePoolSize</strong>  =&gt;  该线程池中<strong>核心线程数最大值</strong></p>
+<blockquote>
+<p><strong>核心线程：</strong></p>
+<p>线程池新建线程的时候，如果当前线程总数小于corePoolSize，则新建的是核心线程，如果超过corePoolSize，则新建的是非核心线程</p>
+<p>核心线程默认情况下会一直存活在线程池中，即使这个核心线程啥也不干(闲置状态)。</p>
+<p>如果指定ThreadPoolExecutor的allowCoreThreadTimeOut这个属性为true，那么核心线程如果不干活(闲置状态)的话，超过一定时间(时长下面参数决定)，就会被销毁掉</p>
+<p>很好理解吧，正常情况下你不干活我也养你，因为我总有用到你的时候，但有时候特殊情况(比如我自己都养不起了)，那你不干活我就要把你干掉了</p>
+</blockquote>
+</li>
+<li><p><strong>int maximumPoolSize</strong></p>
+<blockquote>
+<p>该线程池中<strong>线程总数最大值</strong></p>
+<p>线程总数 = 核心线程数 + 非核心线程数。核心线程在上面解释过了，这里说下非核心线程：</p>
+<p>不是核心线程的线程(别激动，把刀放下…)，其实在上面解释过了</p>
+</blockquote>
+</li>
+<li><p><strong>long keepAliveTime</strong></p>
+<blockquote>
+<p>该线程池中<strong>非核心线程闲置超时时长</strong></p>
+<p>一个非核心线程，如果不干活(闲置状态)的时长超过这个参数所设定的时长，就会被销毁掉</p>
+<p>如果设置allowCoreThreadTimeOut = true，则会作用于核心线程</p>
+</blockquote>
+</li>
+<li><p><strong>TimeUnit unit</strong></p>
+<blockquote>
+<p>keepAliveTime的单位，TimeUnit是一个枚举类型，其包括：</p>
 <ol>
-<li>使用Retrofit进行一次基础的不能再基础的网络请求</li>
-<li>没了</li>
+<li>NANOSECONDS ： 1微毫秒 = 1微秒 / 1000</li>
+<li>MICROSECONDS ： 1微秒 = 1毫秒 / 1000</li>
+<li>MILLISECONDS ： 1毫秒 = 1秒 /1000</li>
+<li>SECONDS ： 秒</li>
+<li>MINUTES ： 分</li>
+<li>HOURS ： 小时</li>
+<li>DAYS ： 天</li>
 </ol>
 </blockquote>
-<h1 id="正文开始"><a href="#正文开始" class="headerlink" title="正文开始"></a>正文开始</h1><h2 id="Retrofit是啥？"><a href="#Retrofit是啥？" class="headerlink" title="Retrofit是啥？"></a>Retrofit是啥？</h2><p>我想既然朋友你找到这篇文章，一定心里有个底，简单说就是<strong>一个简化网络操作的库</strong></p>
-<ul>
-<li><p>准备工作<br><strong>1. 添加依赖</strong></p>
-<pre><code>//这是Retrofit的包
-  compile &#39;com.squareup.retrofit2:retrofit:2.2.0&#39;
-//这是Retrofit用来将得到的json转化成bean对象的包
-  compile &#39;com.squareup.retrofit2:converter-gson:2.0.2&#39;
-</code></pre><p><strong>2. 用于请求数据的api，这里送你一个</strong></p>
-<pre><code>//最后面的num=3，这个数字可以自己改，需要几条数据就写几
-http://www.imooc.com/api/teacher?type=4&amp;num=3
-</code></pre><p><strong>3. json对应的javabean</strong><br>咱们先将2中的url用浏览器访问一下，会得到一串json字符串<br><del>根据json内容自己敲一个bean</del><br>复制json字符串，然后去<a href="http://www.jsonschema2pojo.org/" target="_blank" rel="external">jsonschema2pojo</a>将他转化成一个bean<br><img src="http://upload-images.jianshu.io/upload_images/4924025-b15735d01523902d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="jsonschema2pojo"><br>下载之后你得到了：<strong>Bean.java</strong>和<strong>Datum.java</strong>两个源文件</p>
-<pre><code>/**Bean.java**/
-public class Bean {
-      public Integer status;
-      public List&lt;Datum&gt; data = null;
-      public String msg;
-      private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;&gt;();
+</li>
+<li><p><strong>BlockingQueue<runnable> workQueue</runnable></strong></p>
+<blockquote>
+<p>该线程池中的任务队列：维护着等待执行的Runnable对象</p>
+<p>当所有的核心线程都在干活时，新添加的任务会被添加到这个队列中等待处理，如果队列满了，则新建非核心线程执行任务</p>
+<p>常用的workQueue类型：</p>
+<ol>
+<li><p><strong>SynchronousQueue：</strong>这个队列接收到任务的时候，会直接提交给线程处理，而不保留它，如果所有线程都在工作怎么办？那就新建一个线程来处理这个任务！所以为了保证不出现&lt;线程数达到了maximumPoolSize而不能新建线程&gt;的错误，使用这个类型队列的时候，maximumPoolSize一般指定成Integer.MAX_VALUE，即无限大</p>
+</li>
+<li><p><strong>LinkedBlockingQueue：</strong>这个队列接收到任务的时候，如果当前线程数小于核心线程数，则新建线程(核心线程)处理任务；如果当前线程数等于核心线程数，则进入队列等待。由于这个队列没有最大值限制，即所有超过核心线程数的任务都将被添加到队列中，这也就导致了maximumPoolSize的设定失效，因为总线程数永远不会超过corePoolSize</p>
+</li>
+<li><p><strong>ArrayBlockingQueue：</strong>可以限定队列的长度，接收到任务的时候，如果没有达到corePoolSize的值，则新建线程(核心线程)执行任务，如果达到了，则入队等候，如果队列已满，则新建线程(非核心线程)执行任务，又如果总线程数到了maximumPoolSize，并且队列也满了，则发生错误</p>
+</li>
+<li><p><strong>DelayQueue：</strong>队列内元素必须实现Delayed接口，这就意味着你传进去的任务必须先实现Delayed接口。这个队列接收到任务时，首先先入队，只有达到了指定的延时时间，才会执行任务</p>
+</li>
+</ol>
+</blockquote>
+</li>
+<li><p><strong>ThreadFactory threadFactory</strong></p>
+<blockquote>
+<p>创建线程的方式，这是一个接口，你new他的时候需要实现他的<code>Thread newThread(Runnable r)</code>方法，一般用不上，<strong>这是星期六，休息</strong></p>
+<p>但我还是说一句吧(把枪放下…)</p>
+<p>小伙伴应该知道AsyncTask是对线程池的封装吧？那就直接放一个AsyncTask新建线程池的threadFactory参数源码吧：</p>
+<pre><code>new ThreadFactory() {
+    private final AtomicInteger mCount = new AtomicInteger(1);
 
-      public Map&lt;String, Object&gt; getAdditionalProperties() {
-          return this.additionalProperties;
-      }
-
-      public void setAdditionalProperty(String name, Object value) {
-          this.additionalProperties.put(name, value);
-      }
+    public Thread new Thread(Runnable r) {
+        return new Thread(r,&quot;AsyncTask #&quot; + mCount.getAndIncrement());
+    }
 }
-</code></pre><pre><code>/**Datum.java**/
-public class Datum {
-      public Integer id;
-      public String name;
-      public String picSmall;
-      public String picBig;
-      public String description;
-      public Integer learner;
-      private Map&lt;String, Object&gt; additionalProperties = new HashMap&lt;&gt;();
-
-      public Map&lt;String, Object&gt; getAdditionalProperties() {
-          return this.additionalProperties;
-      }
-
-      public void setAdditionalProperty(String name, Object value) {
-          this.additionalProperties.put(name, value);
-      }
-}
-</code></pre><p>接下来你需要将他们复制到你项目的包下，因为你要用到他们<br><strong>至此，准备就工作就全部做完了</strong></p>
+</code></pre><p>这么简单？就给线程起了个名？！对啊，所以说这是星期六啊，别管他了，虽然我已经强迫你们看完了…</p>
+</blockquote>
+</li>
+<li><p><strong>RejectedExecutionHandler handler</strong></p>
+<blockquote>
+<p>这玩意儿就是抛出异常专用的，比如上面提到的两个错误发生了，就会由这个handler抛出异常，你不指定他也有个默认的</p>
+<p>抛异常能抛出什么花样来？所以这个星期天不管了，一边去，根本用不上</p>
+</blockquote>
 </li>
 </ul>
-<h2 id="正式开始使用Retrofit"><a href="#正式开始使用Retrofit" class="headerlink" title="正式开始使用Retrofit"></a>正式开始使用Retrofit</h2><h3 id="首先需要写一个接口"><a href="#首先需要写一个接口" class="headerlink" title="首先需要写一个接口"></a>首先需要写一个接口</h3><p>这个接口规定get、post请求的url参数；规定一个返回Call对象（这个call对象用于正式发起请求并获得返回数据）的方法，这个方法接收的参数为url参数值，用开始给的url举例：</p>
-<pre><code>http://www.imooc.com/api/teacher?type=4&amp;num=3
-//num=3,num是一个参数，3是参数值，而这个接口内就规定了url中有哪些参数
-//返回Call对象 的方法 接收的参数，就是url的参数值
-</code></pre><p>那么对于这个api，我们需要写的接口应该是这样：</p>
-<pre><code>public interface ApiService {
-        @GET(&quot;teacher?type=4&quot;)
-        Call&lt;Bean&gt; getCall(@Query(&quot;num&quot;) int count);
-    }
-//这个&quot;@GET&quot;是Retrofit的注解，表示进行get请求，()括号内的字符串就是url的*参数信息*
-//那为什么&quot;&amp;num=3&quot;不见了呢？看官请看我下面...
-//-------Call&lt;Bean&gt; getCall(@Query(&quot;num&quot;) int count);-------
-//这个方法返回一个Call&lt;Bean&gt;对象，等会儿正式发起请求并获取数据就靠他了
-//对头，Bean就对应于Bean.java！因为我们需要解析json变成一个Bean实例嘛
-//(@Query(&quot;num&quot;) int count)就厉害了，他表示：
-//在@GET(&quot;teacher?type=4&quot;)之中的字符串的后面，再添加&quot;&amp;num=&quot;
-//那么num等于多少呢，这就在使用getCall方法的时候由参数int count决定了
-</code></pre><p>好了，一个进行get请求的接口就写完了，也就这么两行，太简单了！</p>
-<blockquote>
-<p>其实，在这里还有另外一种情况，如果url不是在后面&amp;添加参数，而需要指定的变量在url的路径中呢?比如github这个api：</p>
-<pre><code>https://api.github.com/users/{user}/repos
-</code></pre><p>{user}是需要查找的用户名<br><strong>这个时候接口就应该这样写：</strong></p>
-<pre><code>public interface ApiService {
-      @GET(&quot;users/{user}/repos&quot;)
-      Call&lt;Bean&gt; getCall(@Path(&quot;user&quot;) String u);
-  }
-//{user}直接理解为一个变量，这个变量的值由↓决定
-//@Path(&quot;user&quot;)表示将以上路径中的{user}变量赋值为参数u的值
-//当然切记，这里的Call&lt;Bean&gt;的Bean应该换成另外你根据API返回的json生成的bean
-</code></pre><p>以上内容，请另外尝试，与本次demo无关呀</p>
-</blockquote>
-<pre><code>什么？post请求的接口该怎么写？
-**我也不知道(/▽╲)**
-</code></pre><h3 id="接下来创建一个Retrofit实例，通过Retrofit实例创建-接口的实例"><a href="#接下来创建一个Retrofit实例，通过Retrofit实例创建-接口的实例" class="headerlink" title="接下来创建一个Retrofit实例，通过Retrofit实例创建 接口的实例"></a>接下来创建一个Retrofit实例，通过Retrofit实例创建 接口的实例</h3><pre><code>        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(&quot;http://www.imooc.com/api/&quot;)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        ApiService apiService = retrofit.create(ApiService.class);
-//机智，就是通过baseUrl补全整个url信息了！是不是上面@GET中残缺url的疑惑一下就解决了？！
-//当然在刚刚的接口中，你也可以一次性写全url，但是这样就不够灵活了！
-//----------------addConverterFactory(GsonConverterFactory.create())
-//这一句规定解析json用哪个库，这就是最开始要你导入Gson库的原因啦，咱们用Gson解析json
-//当然你也可以用其他的库解析json，比如jackson，写法是一样的，注意引入别人的库就是了
-//然后很完美的创建了一个retrofit实例，并且通过retrofit实例来创建了一个接口的实例
-</code></pre><h3 id="紧接着我们需要一个Call实例来正式的发起请求获取数据"><a href="#紧接着我们需要一个Call实例来正式的发起请求获取数据" class="headerlink" title="紧接着我们需要一个Call实例来正式的发起请求获取数据"></a>紧接着我们需要一个Call实例来正式的发起请求获取数据</h3><pre><code>//请求3条数据，最后url就拼接成了最顶上给的url，是一毛一样的
-//没错，网络请求有异常，得try/catch一下
-        Call&lt;Bean&gt; call = apiService.getCall(3);
-        try {
-            call.execute();//执行call，也就是正式发起网络请求咯！
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-</code></pre><p>那么问题来了，发起网络请求之后，我去哪儿得到数据呢！机智的我把鼠标放在”execute()”上，然后按下ctrl键：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4924025-3573166778e36bc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="得到了call.execute()的返回值"></p>
-<p>原来call.execute()直接返回了一个<strong>请求结果</strong>，那么我们拿到这个结果来看看都有啥：</p>
-<pre><code>Response&lt;Bean&gt; response= call.execute();
-result.//看下图
-</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/4924025-1d836282a2b4617e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="result都有啥"><br>哇，这么多方法，返回的都是什么？其实一看方法名和返回类型便知，这里我们挑两个打印出来看看：</p>
-<pre><code>        try {
-            Response&lt;Bean&gt; response= call.execute();
-            Log.i(TAG, &quot;response.body()-----&gt;&quot; + response.body());
-            Log.i(TAG, &quot;response.message()-----&gt;&quot; + response.message());
-            Log.i(TAG, &quot;response.code()-----&gt;&quot; + response.code());
-            //明明打印了3个！！
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-</code></pre><h3 id="拿到返回结果之后"><a href="#拿到返回结果之后" class="headerlink" title="拿到返回结果之后"></a>拿到返回结果之后</h3><p>好的，现在<strong>所有代码如下：</strong></p>
-<pre><code>public class MainActivity extends AppCompatActivity {
-        private static final String TAG = &quot;MainActivity&quot;;
-        public interface ApiService {
-            @GET(&quot;teacher?type=4&quot;)
-            Call&lt;Bean&gt; getCall(@Query(&quot;num&quot;) int count);
-        }
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(&quot;http://www.imooc.com/api/&quot;)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-            ApiService apiService = retrofit.create(ApiService.class);
-            Call&lt;Bean&gt; call = apiService.getCall(3);
-            try {
-                Response&lt;Bean&gt; response= call.execute();
-                Log.i(TAG, &quot;response.body()-----&gt;&quot; + response.body());
-                Log.i(TAG, &quot;response.message()-----&gt;&quot; + response.message());
-                Log.i(TAG, &quot;response.code()-----&gt;&quot; + response.code());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+<p>新建一个线程池的时候，一般只用5个参数的构造函数。</p>
+<h3 id="向ThreadPoolExecutor添加任务"><a href="#向ThreadPoolExecutor添加任务" class="headerlink" title="向ThreadPoolExecutor添加任务"></a>向ThreadPoolExecutor添加任务</h3><p>那说了这么多，你可能有疑惑，我知道new一个ThreadPoolExecutor，大概知道各个参数是干嘛的，可是我new完了，怎么向线程池提交一个要执行的任务啊？</p>
+<p>通过<code>ThreadPoolExecutor.execute(Runnable command)</code>方法即可向线程池内添加一个任务</p>
+<h3 id="ThreadPoolExecutor的策略"><a href="#ThreadPoolExecutor的策略" class="headerlink" title="ThreadPoolExecutor的策略"></a>ThreadPoolExecutor的策略</h3><p>上面介绍参数的时候其实已经说到了ThreadPoolExecutor执行的策略，这里给总结一下，当一个任务被添加进线程池时：</p>
+<ol>
+<li>线程数量未达到corePoolSize，则新建一个线程(核心线程)执行任务</li>
+<li>线程数量达到了corePools，则将任务移入队列等待</li>
+<li>队列已满，新建线程(非核心线程)执行任务</li>
+<li>队列已满，总线程数又达到了maximumPoolSize，就会由上面那位星期天(RejectedExecutionHandler)抛出异常</li>
+</ol>
+<h2 id="常见四种线程池"><a href="#常见四种线程池" class="headerlink" title="常见四种线程池"></a>常见四种线程池</h2><p>如果你不想自己写一个线程池，那么你可以从下面看看有没有符合你要求的(一般都够用了)，如果有，那么很好你直接用就行了，如果没有，那你就老老实实自己去写一个吧</p>
+<p>Java通过Executors提供了四种线程池，这四种线程池都是直接或间接配置ThreadPoolExecutor的参数实现的，下面我都会贴出这四种线程池构造函数的源码，各位大佬们一看便知！</p>
+<p>来，走起：</p>
+<h3 id="CachedThreadPool"><a href="#CachedThreadPool" class="headerlink" title="CachedThreadPool()"></a>CachedThreadPool()</h3><p>可缓存线程池：</p>
+<ol>
+<li>线程数无限制</li>
+<li>有空闲线程则复用空闲线程，若无空闲线程则新建线程</li>
+<li>一定程序减少频繁创建/销毁线程，减少系统开销</li>
+</ol>
+<p>创建方法：</p>
+<p><code>ExecutorService cachedThreadPool = Executors.newCachedThreadPool();</code></p>
+<p>源码：</p>
+<pre><code>public static ExecutorService newCachedThreadPool() {
+    return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
+                                  60L, TimeUnit.SECONDS,
+                                  new SynchronousQueue&lt;Runnable&gt;());
 }
-</code></pre><p>好像很完美了，马上就能收获利用retrofit发起网络请求获得数据的喜悦了！</p>
-<h3 id="来，Run起来！"><a href="#来，Run起来！" class="headerlink" title="来，Run起来！"></a>来，Run起来！</h3><p><strong>————别Run了，你的结果一定是：</strong><br><img src="http://upload-images.jianshu.io/upload_images/4924025-d9cf01b573b8d3b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="程序挂掉了啊哈哈哈哈"><br>因为你没有添加网络权限！！</p>
-<pre><code>&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
-</code></pre><p>好，这下OK了，这次我们<strong>真正的Run起来！</strong><br><img src="http://upload-images.jianshu.io/upload_images/4924025-d9cf01b573b8d3b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="程序**又**挂掉了啊哈哈哈哈哈哈我不行了"><br>报错信息：</p>
-<pre><code>//这尼玛我怎么在主线程进行网络请求了呢！！
-Caused by: android.os.NetworkOnMainThreadException
-</code></pre><p>好了，这下要<strong>真正的解决问题了！真正的所有代码MainActivity.java：</strong></p>
-<pre><code>public class MainActivity extends AppCompatActivity {
-    private static final String TAG = &quot;MainActivity&quot;;
-    public interface ApiService {
-        @GET(&quot;teacher?type=4&quot;)
-        Call&lt;Bean&gt; getCall(@Query(&quot;num&quot;) int count);
-    }
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(&quot;http://www.imooc.com/api/&quot;)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        ApiService apiService = retrofit.create(ApiService.class);
-        final Call&lt;Bean&gt; call = apiService.getCall(3);
-//----这里直接new了一个子线程来进行网络请求，看下方有一个Retrofit自带的异步请求方法
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Response&lt;Bean&gt; response= call.execute();
-                    Log.i(TAG, &quot;response.body()-----&gt;&quot; + response.body());
-                    Log.i(TAG, &quot;response.message()-----&gt;&quot; + response.message());
-                    Log.i(TAG, &quot;response.code()-----&gt;&quot; + response.code());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-//如果你选择了这种写法
-//可千万别忘了start()!不然等会儿看不到log，你又要拿起砍刀找我了！
-//-------------------------------------
-    }
-</code></pre><blockquote>
-<p><strong>Retrofit还有一个本身就是异步请求的方法：</strong></p>
-<pre><code>        //call.enqueue()方法接收一个Callback回调，我们直接new出来，这是异步请求方法
-        call.enqueue(new Callback&lt;Bean&gt;() {
-            @Override
-            public void onResponse(Call&lt;Bean&gt; call, Response&lt;Bean&gt; response) {
-                //当获取到返回结果的时候回调这个方法
-                Log.i(TAG, &quot;response.body()-----&gt;&quot; + response.body());
-                Log.i(TAG, &quot;response.message()-----&gt;&quot; + response.message());
-                Log.i(TAG, &quot;response.code()-----&gt;&quot; + response.code());
-            }
-            @Override
-            public void onFailure(Call&lt;Bean&gt; call, Throwable t) {
-                //网络请求失败的时候回调这个方法
-            }
-        });
-</code></pre><p>把上面的上面的new Thread(……).start();全部换成上面的代码，也一样OK了！</p>
-<ul>
-<li>当然<strong>更推荐这里写法</strong>了！</li>
-</ul>
-</blockquote>
-<p>好了，废话这么多，来看看log到底打印出来了一些什么吧：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4924025-7eda56dfc8861b09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="log信息"></p>
-<p>真的太完美了，这个结果告诉我们请求码是200，请求信息是OK，还给了我一个Bean对象！<br>噢对了，看看我会不会拿到一个假的Bean对象！眼见为实</p>
-<pre><code>        ......
-            Bean b = response.body();
-            Log.i(TAG, &quot;Bean内容：&quot; + b.msg);
-            Log.i(TAG, &quot;Bean内容：&quot; + b.data.get(0).description);
-         ......
-</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/4924025-eab057db555c435c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="还好拿到了真对象"></p>
-<p><strong>好了，至此我们已经成功利用Retrofit进行网络请求，并且将得到的json直接变成了Bean对象，简直不要太爽</strong></p>
+</code></pre><p>通过我上面<strong>行云流水谈笑风生天马行空滔滔不绝</strong>的对各种参数的说明，这个源码你肯定一眼就看懂了，想都不用想(下面三种一样啦)</p>
+<h3 id="FixedThreadPool"><a href="#FixedThreadPool" class="headerlink" title="FixedThreadPool()"></a>FixedThreadPool()</h3><p>定长线程池：</p>
+<ol>
+<li>可控制线程最大并发数（同时执行的线程数）</li>
+<li>超出的线程会在队列中等待</li>
+</ol>
+<p>创建方法：</p>
+<pre><code>//nThreads =&gt; 最大线程数即maximumPoolSize
+ExecutorService fixedThreadPool = Executors.newFixedThreadPool(int nThreads);
+
+//threadFactory =&gt; 创建线程的方法，这就是我叫你别理他的那个星期六！你还看！
+ExecutorService fixedThreadPool = Executors.newFixedThreadPool(int nThreads, ThreadFactory threadFactory);
+</code></pre><p>源码：</p>
+<pre><code>public static ExecutorService newFixedThreadPool(int nThreads) {
+    return new ThreadPoolExecutor(nThreads, nThreads,
+                                  0L, TimeUnit.MILLISECONDS,
+                                  new LinkedBlockingQueue&lt;Runnable&gt;());
+}
+</code></pre><p>2个参数的构造方法源码，不用我贴你也知道他把星期六放在了哪个位置！所以我就不贴了，省下篇幅给我扯皮</p>
+<h3 id="ScheduledThreadPool"><a href="#ScheduledThreadPool" class="headerlink" title="ScheduledThreadPool()"></a>ScheduledThreadPool()</h3><p>定长线程池：</p>
+<ol>
+<li>支持定时及周期性任务执行。</li>
+</ol>
+<p>创建方法：</p>
+<pre><code>//nThreads =&gt; 最大线程数即maximumPoolSize
+ExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(int corePoolSize);
+</code></pre><p>源码：</p>
+<pre><code>public static ScheduledExecutorService newScheduledThreadPool(int corePoolSize) {
+    return new ScheduledThreadPoolExecutor(corePoolSize);
+}
+
+//ScheduledThreadPoolExecutor():
+public ScheduledThreadPoolExecutor(int corePoolSize) {
+    super(corePoolSize, Integer.MAX_VALUE,
+          DEFAULT_KEEPALIVE_MILLIS, MILLISECONDS,
+          new DelayedWorkQueue());
+}
+</code></pre><h3 id="SingleThreadExecutor"><a href="#SingleThreadExecutor" class="headerlink" title="SingleThreadExecutor()"></a>SingleThreadExecutor()</h3><p>单线程化的线程池：</p>
+<ol>
+<li>有且仅有一个工作线程执行任务</li>
+<li>所有任务按照指定顺序执行，即遵循队列的入队出队规则</li>
+</ol>
+<p>创建方法：</p>
+<p><code>ExecutorService singleThreadPool = Executors.newSingleThreadPool();</code></p>
+<p>源码：</p>
+<pre><code>public static ExecutorService newSingleThreadExecutor() {
+    return new FinalizableDelegatedExecutorService
+        (new ThreadPoolExecutor(1, 1,
+                                0L, TimeUnit.MILLISECONDS,
+                                new LinkedBlockingQueue&lt;Runnable&gt;()));
+}
+</code></pre><p>还有一个<code>Executors.newSingleThreadScheduledExecutor()</code>结合了3和4，就不介绍了，基本不用。</p>
+<p>##结语</p>
+<p><strong>墙裂建议各位看完本文一定要实际动手去敲一遍都验证一遍，这样才能很好的掌握知识</strong></p>
+<p><strong>动手做，永远是学习的最好的方式！</strong></p>
+<p>end</p>
 <blockquote>
 <ul>
+<li>更多内容欢迎访问<a href="https://liuzho.com"><strong>我的主页</strong></a>或<a href="https://liuzho.github.io" target="_blank" rel="external"><strong>我的博客</strong></a></li>
 <li>如果我的文章确实有帮助到你，请不要忘了点一下文末的”♡”让他变成”❤”</li>
-<li>作为新手难免很多地方理解不到位，文中若有错误请直(bu)接(yao)指(ma)出(wo)</li>
+<li>作为小菜鸟难免很多地方理解不到位，文中若有错误请直(bu)接(yao)指(ma)出(wo)</li>
 <li>写作不易！</li>
 </ul>
 </blockquote>
@@ -654,7 +649,7 @@ Caused by: android.os.NetworkOnMainThreadException
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/03/08/ReactNative利用Navigator实现登录跳转/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/04/15/初窥Socket：与自己聊次天/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -667,14 +662,6 @@ Caused by: android.os.NetworkOnMainThreadException
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
-    
-        <a href="/2017/03/22/高仿《ONE一个》APP/" id="post_nav-older" class="next-content">
-            旧篇
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_forward</i>
-            </button>
-        </a>
     
 </nav>
 
