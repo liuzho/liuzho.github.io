@@ -10,7 +10,7 @@
     
     <title>
         
-            标签: Executor | 
+            面试题思考：try 代码块中含 return 语句时，代码执行顺序 | 
         
         LiuZh
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="LiuZh">
     <meta name="description" content="大三狗一枚，求安卓开发实习ing...">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,Java,Java面试题">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -62,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://liuzho.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: Executor | LiuZh">
+    <meta property="og:title" content="面试题思考：try 代码块中含 return 语句时，代码执行顺序 | LiuZh">
     <meta property="og:description" content="大三狗一枚，求安卓开发实习ing...">
-    
+    <meta property="og:article:tag" content="Java"> <meta property="og:article:tag" content="Java面试题"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -225,96 +225,352 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原题"><span class="post-toc-number">1.</span> <span class="post-toc-text">原题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#神奇栗子"><span class="post-toc-number">2.</span> <span class="post-toc-text">神奇栗子</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#栗子代码"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">栗子代码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分析一下"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">分析一下</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#洗地时间"><span class="post-toc-number">3.</span> <span class="post-toc-text">洗地时间</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java中的值传递"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">java中的值传递</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#真的开始分析了"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">真的开始分析了</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#又一个小栗子"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">又一个小栗子</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">4.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结语"><span class="post-toc-number">5.</span> <span class="post-toc-text">结语</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Pure Thumbnail -->
-            <div class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#AA77FF !important">
+            <div class="post_thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#AA77FF !important">
+        
+    
+            <p class="article-headline-p">
+                面试题思考：try 代码块中含 return 语句时，代码执行顺序
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>LiuZh</strong>
+        <span>4月 27, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Java/">Java</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Java面试题/">Java面试题</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2017/04/27/面试题思考：try-代码块中含-return-语句时，代码执行顺序/" class="leancloud-views_num" data-flag-title="面试题思考：try 代码块中含 return 语句时，代码执行顺序">
+     &nbsp;浏览量
+</span>
+
+            </li>
+        </a>
+    
+
+    
         
     
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/04/17/线程池，这一篇或许就够了/">线程池，这一篇或许就够了</a></p>
-    </div>
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=面试题思考：try 代码块中含 return 语句时，代码执行顺序&url=https://liuzho.com//2017/04/27/面试题思考：try-代码块中含-return-语句时，代码执行顺序/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
 
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            为什...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/04/17/线程池，这一篇或许就够了/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="LiuZh's avatar">
-            </div>
-            <div>
-                <strong>LiuZh</strong>
-                <span>4月 17, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/AndroidNative/">AndroidNative</a>
-            </span>
+    <!-- Share Twitter -->
+    
 
-            
+    <!-- Share Facebook -->
+    
 
-            
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://liuzho.com//2017/04/27/面试题思考：try-代码块中含-return-语句时，代码执行顺序/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
 
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=LiuZh&title=面试题思考：try 代码块中含 return 语句时，代码执行顺序&summary=大三狗一枚，求安卓开发实习ing...&pics=https://liuzho.com/img/favicon.png&url=https://liuzho.com/2017/04/27/面试题思考：try-代码块中含-return-语句时，代码执行顺序/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
 </div>
 
-            
-            
-        
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-
-    
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * null + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
-    $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
+        <p>刷java面试题偶然看到这类问题(try/finally中含有return时的执行顺序)，觉得挺有意思于是小小的研究了一下，希望经过我<strong>添油加醋天马行空</strong>之后，能给你带来一定的帮助</p>
+<h2 id="原题"><a href="#原题" class="headerlink" title="原题"></a>原题</h2><blockquote>
+<p>try {} 里有一个return语句，那么紧跟在这个try后的finally {}里的代码会不会被执行?什么时候被执行?在return前还是后? </p>
+</blockquote>
+<p>乍一看题目很简单嘛，java规范都说了，finally会在try代码块的return之前执行，你这文章写得没意义，不看了</p>
+<p>你等等！(拿起我身边的五尺砍刀)</p>
+<h2 id="神奇栗子"><a href="#神奇栗子" class="headerlink" title="神奇栗子"></a>神奇栗子</h2><p>看完这个栗子，你在想想执行顺序到底是怎样的</p>
+<h3 id="栗子代码"><a href="#栗子代码" class="headerlink" title="栗子代码"></a>栗子代码</h3><pre><code>    public static void main(String[] args) {
+        int result = test();
+        System.out.println(result);
     }
-</script>
+
+    public static int test() {
+        int t = 0;
+        try {
+            return t;
+        } finally {
+            ++t;
+        }
+    }
+</code></pre><h3 id="分析一下"><a href="#分析一下" class="headerlink" title="分析一下"></a>分析一下</h3><p>test()方法内，在try中return了t，那么在main方法中test()函数的返回值应该是t=0，即<strong>控制台输出0</strong></p>
+<p>但是因为有finally的存在，而finally中对t进行了自增运算，并且finally会在try中的return语句之前执行，所以正确的情况是<strong>控制台输出1</strong></p>
+<p>所以你最终确定的答案是：<strong>控制台输出1</strong></p>
+<blockquote>
+<p><strong>然而事实并非如此，将程序跑起来之后，得到的结果是:</strong><br><strong>输出0</strong><br>将栗子跑起来亲眼看一下吧~</p>
+</blockquote>
+<p>得到这个结果你也许要爆炸了，啥？java规范说的都是错的？！</p>
+<p>不用急，到我给sun洗地的时间了</p>
+<h2 id="洗地时间"><a href="#洗地时间" class="headerlink" title="洗地时间"></a>洗地时间</h2><p>在洗地之前，你很有必要先理解java中的值传递，如果你已经了解该内容可略过下面这一个小节点</p>
+<h3 id="java中的值传递"><a href="#java中的值传递" class="headerlink" title="java中的值传递"></a>java中的值传递</h3><blockquote>
+<p>由于这只是本文内容引申出去的知识点，不过多赘述，随便唠两句，能借此明白则好，不明白希望借助搜索引擎明白一下！</p>
+</blockquote>
+<p>在java的方法调用中，时常需要传递参数，那么传递的参数是将之前的变量直接传递给方法内了吗？</p>
+<p>显然不是的，调用方法传递参数的时候，传递的只是原变量的一个<strong>副本(复制体)</strong>，换句话说就是，将变量的值传递给了方法体，而并没有真正的将变量传递进去。</p>
+<p>看个栗子：</p>
+<pre><code>    public static void main(String[] args) {
+        int t = 0;
+        test(t);
+        System.out.println(t);
+    }
+
+    public static int test(int a) {
+        a = 111;
+    }
+</code></pre><p>正确输出是0，因为test()方法内拿到的a，只是t的一个<strong>副本(复制体)</strong>而并不直接是t，test()内改变了a的值，并不影响t的值</p>
+<p>以上是对于基本数据类型，如果对于对象呢？</p>
+<p>如果参数是对象，那么传递的是<strong>对象的引用</strong>的<strong>副本(复制体)</strong>，这也就是为什么在方法体内对对象进行修改，会真正的改变对象。因为方法体外的引用和方法体内的引用指向的是堆内存中的同一个对象，传递的是对象的引用</p>
+<p>如果这里还不能理解<strong>值传递</strong>，建议先理解一下这一个概念再继续往下看</p>
+<h3 id="真的开始分析了"><a href="#真的开始分析了" class="headerlink" title="真的开始分析了"></a>真的开始分析了</h3><p>为了你看着方便，栗子代码再来一份：（我真的不是为了凑字数）</p>
+<pre><code>    public static void main(String[] args) {
+        int result = test();
+        System.out.println(result);
+    }
+
+    public static int test() {
+        int t = 0;
+        try {
+            return t;
+        } finally {
+            ++t;
+        }
+    }
+</code></pre><blockquote>
+<ol>
+<li>当代码执行到<code>return t;</code>时，并不是直接将t返回了出去，而是将t保留了起来(因为还有一个finally语句块没有执行!)<br>并且这个保留，就是<strong>值传递性质的一个保留</strong>，也就是保留的是t的一个<strong>副本(复制体)</strong>，我这里先叫他tt吧(不是套套！！)</li>
+<li>接下来执行finally语句块，finally中将t做了自增运算，t的确变成了1，但是这并没有影响t的复制体tt的值！保留起来的tt值还是0！</li>
+<li>这个时候执行完了finally，正式将保留起来的tt返回出去，于是，<strong>整个函数的返回结果就是0</strong></li>
+<li>这个t的<strong>副本(复制体)</strong>保留的地方是哪儿呢？我查了半天，有个应该靠谱的说法，<strong>保留在函数栈中</strong>，但具体保留的区域叫什么，我也不知道，<strong>还请知情大佬指教一下！</strong></li>
+</ol>
+</blockquote>
+<p>上图或许直观一点？</p>
+<p><img src="https://dn-mhke0kuv.qbox.me/692628665ac446bc143a" alt="灵魂画师"><br><strong>叫我一声灵魂画师我可敢答应！</strong></p>
+<p>那么如果，这个t是一个对象呢？按照前面说的值传递的问题，如果t是一个对象，在finally中对t进行修改，那么最终返回出去的t所显示出来的数据，应该是经过修改的。</p>
+<p>写一个Person类来检验一下吧</p>
+<pre><code>public class Test {
+
+    public static void main(String[] args) {
+        Person result = test();
+        System.out.println(result.age);
+    }
+
+    public static Person test() {
+        Person t = new Person();
+        t.age = 0;
+        try {
+            return t;
+        } finally {
+            t.age++;
+
+        }
+    }
+
+}
+
+class Person {
+    int age;
+}
+</code></pre><p><strong>这段代码输出的是1</strong>，因为Person是一个类，t是一个对象的引用，对象实例保存在堆内存中，t的副本tt也是一个对象的引用，t和tt都指向堆内存中的对象实例，那么不论修改谁，实际上对象实例都被修改了！</p>
+<p>看完我这一通<strong>胡说八道</strong>，你应该了解了整个执行流程咯？</p>
+<p>那么继续开一个引申</p>
+<h3 id="又一个小栗子"><a href="#又一个小栗子" class="headerlink" title="又一个小栗子"></a>又一个小栗子</h3><p>如果在finally中也有一个return，会发生什么？</p>
+<pre><code>    public static void main(String[] args) {
+        int result = test();
+        System.out.println(result);
+    }
+
+    public static int test() {
+        int t = 0;
+        try {
+            return t;
+        } finally {
+            ++t;
+            return t;
+        }
+    }
+</code></pre><p><strong>最终输出的结果是1</strong></p>
+<p>就是说，如果try中有return而finally中也有return，那么后者将会让前者失效！</p>
+<p><strong>理解</strong></p>
+<blockquote>
+<p>=&gt; try中将t保留了一份副本用于返回出去，到了finally中，又有一个return语句，这时候又要创建一个用于返回的副本，那这个时候就有两个副本了，到底返回谁呢？取后者！</p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这一个面试题，看似简单，却暗藏杀机啊！</p>
+<p>可是说了这么多，结果就是finally在return之后执行吗？</p>
+<p>非也，你没看见return没有真正的执行完就开始执行finally吗？并且是先执行完了finally，才执行完return，这也就很好理解java规范中的finally在return之前执行了。</p>
+<blockquote>
+<p>不过，按如上情况，这句话应该变成这样：<strong>finally比return先执行完毕</strong>。是不是就更容易理解了呢？<br>也就是说，return先被执行了，执行return的时候发现有finally，于是不能那么快执行完毕return，先去执行finally，等finally执行完毕之后，return才能执行完毕。</p>
+</blockquote>
+<p>全文下来，真是用我的<strong>三寸不烂之舌经过滔滔不绝的输出连绵不绝的蛊惑</strong>打开了你的新世界大门啊</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>更多内容欢迎访问<a href="https://liuzho.com"><strong>我的主页</strong></a>或<a href="https://liuzho.github.io" target="_blank" rel="external"><strong>我的博客</strong></a><br>如果我的文章确实有帮助到你，请不要忘了点一下文末的”♡”让他变成”❤”<br>作为一直雏鸡难免很多地方理解不到位，文中若有错误请直(bu)接(yao)指(ma)出(wo)<br>写作不易！</p>
+
+    
 
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/04/23/简单练手APP《每阅》/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -532,6 +788,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 
