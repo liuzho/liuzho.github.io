@@ -10,7 +10,7 @@
     
     <title>
         
-            标签: Retrofit | 
+            公司内分享RN内容 | 
         
         LiuZh
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="LiuZh">
     <meta name="description" content="大三狗一枚，求安卓开发实习ing...">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,ReactNative">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -62,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://liuzho.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: Retrofit | LiuZh">
+    <meta property="og:title" content="公司内分享RN内容 | LiuZh">
     <meta property="og:description" content="大三狗一枚，求安卓开发实习ing...">
-    
+    <meta property="og:article:tag" content="ReactNative"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -225,218 +225,282 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分享ReactNative"><span class="post-toc-number">1.</span> <span class="post-toc-text">分享ReactNative</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是ReactNative"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">什么是ReactNative</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#学习ReactNative之前你需要的储备"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">学习ReactNative之前你需要的储备</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#OK，开始进入RN踩坑之旅"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">OK，开始进入RN踩坑之旅</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如果你确认你想去学习RN"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">如果你确认你想去学习RN</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Pure Thumbnail -->
-            <div class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#AA77FF !important">
+            <div class="post_thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#AA77FF !important">
+        
+    
+            <p class="article-headline-p">
+                公司内分享RN内容
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>LiuZh</strong>
+        <span>7月 29, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/ReactNative/">ReactNative</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2017/07/29/ReactNative/" class="leancloud-views_num" data-flag-title="公司内分享RN内容">
+     &nbsp;浏览量
+</span>
+
+            </li>
+        </a>
+    
+
+    
         
     
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/04/23/简单练手APP《每阅》/">简单练手APP《每阅》</a></p>
-    </div>
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=公司内分享RN内容&url=https://liuzho.com//2017/07/29/ReactNative/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
 
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-使用到的知识点都不难，也不是很多
-主要是巩固知识、理解项目结构这之类
-当然了，如果喜欢这个APP也可以安装在手...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/04/23/简单练手APP《每阅》/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="LiuZh's avatar">
-            </div>
-            <div>
-                <strong>LiuZh</strong>
-                <span>4月 23, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/AndroidNative/">AndroidNative</a>
-            </span>
+    <!-- Share Twitter -->
+    
 
-            
+    <!-- Share Facebook -->
+    
 
-            
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://liuzho.com//2017/07/29/ReactNative/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
 
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=LiuZh&title=公司内分享RN内容&summary=大三狗一枚，求安卓开发实习ing...&pics=https://liuzho.com/img/favicon.png&url=https://liuzho.com/2017/07/29/ReactNative/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
 </div>
 
-            
-            
-        
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Pure Thumbnail -->
-            <div class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#AA77FF !important">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/22/高仿《ONE一个》APP/">高仿《ONE一个》APP</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/22/高仿《ONE一个》APP/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="LiuZh's avatar">
-            </div>
-            <div>
-                <strong>LiuZh</strong>
-                <span>3月 22, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/AndroidNative/">AndroidNative</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Pure Thumbnail -->
-            <div class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#AA77FF !important">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/03/18/向Retrofit打响第一炮/">向Retrofit打响第一炮</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-废话：强行开启了Retrofit的学习模式，但是发现啊，我找到的一些入门文章，简...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/03/18/向Retrofit打响第一炮/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="LiuZh's avatar">
-            </div>
-            <div>
-                <strong>LiuZh</strong>
-                <span>3月 18, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/AndroidNative/">AndroidNative</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
+        <h2 id="分享ReactNative"><a href="#分享ReactNative" class="headerlink" title="分享ReactNative"></a>分享ReactNative</h2><h3 id="什么是ReactNative"><a href="#什么是ReactNative" class="headerlink" title="什么是ReactNative"></a>什么是ReactNative</h3><ul>
+<li><p><a href="http://facebook.github.io/react-native/" target="_blank" rel="external"><strong>FaceBook/ReactNative官网</strong></a>：<strong>Learn once, write anywhere: Build mobile apps with React</strong></p>
+<p>  React Native 使你能够使用基于 JavaScript 和 React 一致的开发体验在本地平台上构建世界一流的应用程序体验。React Native 把重点放在所有开发人员关心的平台的开发效率上——开发者只需学习一种语言就能轻易为任何平台高效地编写代码。Facebook 在多个应用程序产品中使用了 React Native，并将继续为 React Native 投资。</p>
+</li>
+<li><p>我的异常不靠谱的个人说法</p>
+<p>  正常情况下，你想iOS、Android开发都搞定，你需要会OC、Swfit、Java甚至更多的知识，但是你只需要会RN一个知识体系，就能达到这个目的，多方便？目前来说，H5能一统移动端效果，是开发人员梦寐以求的(微信小程序为啥火，愿意也有其一)，但是交互效率极其差劲，ReactNative弥补了交互效率短板，他近乎原生的体验的确非常的棒（目前来说，距离原生还是有差距）。目前部分APP有采用混合开发（部分原生，部分H5 or RN or weex等），我相信RN的模式或者混合开发的模式，将是一个开发趋势~</p>
+</li>
+</ul>
+<h3 id="学习ReactNative之前你需要的储备"><a href="#学习ReactNative之前你需要的储备" class="headerlink" title="学习ReactNative之前你需要的储备"></a>学习ReactNative之前你需要的储备</h3><p>先放最权威的学习资料：（开局放大招没见过？）</p>
+<ol>
+<li><a href="http://facebook.github.io/react-native/docs/getting-started.html" target="_blank" rel="external"><strong>FaceBook-&gt;ReactNative文档</strong></a></li>
+<li><a href="http://facebook.github.io/react-native/docs/getting-started.html" target="_blank" rel="external"><strong>ReactNative中文社区(中文文档)</strong></a></li>
+</ol>
+<p>当然，我现在得告诉你，正式学习ReactNative之前，你必须掌握：</p>
+<ol>
+<li><p>HTML(基本概念就够了)</p>
+<p> 关于HTML的学习，网络上随便一找就有很好的相关知识，而且开发RN，对于HTML的认知只需要一丢丢(认真脸)就够了</p>
+</li>
+<li><p>CSS(你需要掌握大部分CSS属性)，当然，其中的<strong>flex布局</strong>你必须掌握，因为<strong>flex布局</strong>是RN界面摆放的核心知识</p>
+<p> CSS学习也是网上随便找找就有很好的内容~但是对于flex布局的学习，个人墙裂推荐阮一峰老师的博客：<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="external"><strong>flex布局教程：语法篇</strong></a>、<a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html" target="_blank" rel="external"><strong>Flex 布局教程：实例篇</strong></a></p>
+</li>
+<li><p>JavaScript语言，你以为这就够了？不不不，ReactNative已经全面采用ES6语法进行开发，如果仅会ES5那就然并卵了~</p>
+<p> 学习JavaScript，首先需要明确你将打算在JavaScript上投入多少！如果只是想略了解，那么我建议网络上随便找找相关知识看看就够了。如果你想认真的学习JavaScript，希望有全面了解、深入了解，那么我推荐的书籍有：《JavaScript高级程序设计》、《你不知道的JS》、《JavaScript语言精粹》.另外，关于ES6的学习，我想除了阮一峰老师的<a href="http://es6.ruanyifeng.com/" target="_blank" rel="external"><strong>《ES6标准入门》</strong></a>应该别无他荐了吧~（没错阮一峰老师将书开源了….当然喜欢看纸质书也可以去购买纸质书《ES6标准入门》）</p>
+</li>
+</ol>
+<h3 id="OK，开始进入RN踩坑之旅"><a href="#OK，开始进入RN踩坑之旅" class="headerlink" title="OK，开始进入RN踩坑之旅"></a>OK，开始进入RN踩坑之旅</h3><ol>
+<li><p>首先你需要环境，对，和所有方面的知识一样….首先你需要配置RN所需要的环境！</p>
+<p> 直接参见===&gt;<a href="http://facebook.github.io/react-native/docs/getting-started.html" target="_blank" rel="external"><strong>RN官网指导</strong></a>、<a href="http://reactnative.cn/docs/0.45/getting-started.html" target="_blank" rel="external"><strong>RN中文社区指导</strong></a>(就是官网的翻译版&gt;_&lt;)，官网介绍的非常详细！但是这个过程坑异常的多！祝好运了！</p>
+</li>
+<li><p>IDE</p>
+<p> 其实说不上IDE吧，只要是个文本编辑器就OK了(我酷爱sublime)，WebStorm、Atom、Xcode、VSC等等都行，爱用啥用啥，目前好像WebStorm上RN开发比较友好，微软的VSC居然做的也挺炫酷，小赞一下</p>
+</li>
+<li><p>你的Hello World</p>
+<p> 配置环境后，打开命令行敲<code>react-native init HelloWorld</code>你就能初始好你第一个项目==&gt;示例</p>
+</li>
+<li><p>代码结构</p>
+<ul>
+<li>组件导入区： 所有用到的组件都需要事先进行导入，包括样式也需要进行导入</li>
+<li>核心代码区：所有逻辑代码编写的地方</li>
+<li>组件样式区：render()方法中用到的组件的样式，可以集中在这里编写</li>
+<li><p>注册启动组件：组件只有注册后才能运行。这里用到的AppRegistry也需要在组件导入区进行导入</p>
+<p><strong>===&gt;示例</strong></p>
+</li>
+</ul>
+</li>
+<li><p>对RN一些组件、属性、体系方面内容的学习</p>
+<p> 这个直接照着官网左栏目录往下学，学到<strong>&lt;网络&gt;</strong>这一栏(刚好10栏，每一栏内是一篇小教程，很短)第一步OK，可以开始按需学习了~</p>
+</li>
+</ol>
+<h3 id="如果你确认你想去学习RN"><a href="#如果你确认你想去学习RN" class="headerlink" title="如果你确认你想去学习RN"></a>如果你确认你想去学习RN</h3><p>这里这篇博客你不容错过~</p>
+<p><a href="http://www.jianshu.com/p/fa0874be0827" target="_blank" rel="external"><strong>给所有开发者的React Native详细入门指南</strong></a></p>
 
     
-
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * null + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
-    $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
-</script>
 
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/05/21/ReactNative仿《ONE》APP/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/07/29/RN2Native/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -654,6 +718,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 
