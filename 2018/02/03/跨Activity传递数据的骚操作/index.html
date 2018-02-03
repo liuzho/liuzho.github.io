@@ -10,7 +10,7 @@
     
     <title>
         
-            标签: Android网络编程 | 
+            跨Activity传递数据的骚操作 | 
         
         LiuZh
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="LiuZh">
     <meta name="description" content="大三狗一枚，求安卓开发实习ing...">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="null,Android,Activity">
 
     <!-- Favicons -->
     <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
@@ -62,9 +62,9 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="https://liuzho.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: Android网络编程 | LiuZh">
+    <meta property="og:title" content="跨Activity传递数据的骚操作 | LiuZh">
     <meta property="og:description" content="大三狗一枚，求安卓开发实习ing...">
-    
+    <meta property="og:article:tag" content="Android"> <meta property="og:article:tag" content="Activity"> 
 
     <!--[if lte IE 9]>
         <link rel="stylesheet" href="/css/ie-blocker.css">
@@ -225,96 +225,447 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开始埋头苦想"><span class="post-toc-number">1.</span> <span class="post-toc-text">开始埋头苦想</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结语"><span class="post-toc-number"></span> <span class="post-toc-text">结语</span></a>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Pure Thumbnail -->
-            <div class="post-thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#AA77FF !important">
+            <div class="post_thumbnail-pure mdl-card__media mdl-color-text--grey-50" style="background-color:#AA77FF !important">
+        
+    
+            <p class="article-headline-p">
+                跨Activity传递数据的骚操作
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>LiuZh</strong>
+        <span>2月 03, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Activity/">Activity</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Android/">Android</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+    <!-- Leancloud Views -->
+        <a class="post_share-link" href="#">
+            <li class="mdl-menu__item">
+                <span id="/2018/02/03/跨Activity传递数据的骚操作/" class="leancloud-views_num" data-flag-title="跨Activity传递数据的骚操作">
+     &nbsp;浏览量
+</span>
+
+            </li>
+        </a>
+    
+
+    
         
     
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/04/15/初窥Socket：与自己聊次天/">初窥Socket：与自己聊次天</a></p>
-    </div>
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=跨Activity传递数据的骚操作&url=https://liuzho.com//2018/02/03/跨Activity传递数据的骚操作/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
 
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            ...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/04/15/初窥Socket：与自己聊次天/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="LiuZh's avatar">
-            </div>
-            <div>
-                <strong>LiuZh</strong>
-                <span>4月 15, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/AndroidNative/">AndroidNative</a>
-            </span>
+    <!-- Share Twitter -->
+    
 
-            
+    <!-- Share Facebook -->
+    
 
-            
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://liuzho.com//2018/02/03/跨Activity传递数据的骚操作/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
 
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=LiuZh&title=跨Activity传递数据的骚操作&summary=大三狗一枚，求安卓开发实习ing...&pics=https://liuzho.com/img/favicon.png&url=https://liuzho.com/2018/02/03/跨Activity传递数据的骚操作/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
 </div>
 
-            
-            
-        
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
+        <p>一不小心隔了大半年没有写博客了，这大半年从一个小菜鸡变成了一个大（pang）菜鸡。。。好吧，进入正题吧</p>
+<ul>
+<li><p>Q：MainActivity跳到TargetActivity时附带数据要怎么做？</p>
+</li>
+<li><p>A：不就是intent附带数据吗？或者sp/文件存一下等等方式….</p>
+</li>
+<li><p>Q：那如果是没有实现序列化的数据呢？</p>
+</li>
+<li><p>A：序列化一下呗…</p>
+</li>
+<li><p>Q：业务原因/历史原因….这个Bean类要实现序列化的话牵扯到太多东西了，改动成本太大，例如：Bean类里面有Data类，Data类里面又有Other类……..这样的问题</p>
+</li>
+<li><p>A：..???..???…????!!!!!??!</p>
+</li>
+</ul>
+<h3 id="开始埋头苦想"><a href="#开始埋头苦想" class="headerlink" title="开始埋头苦想"></a>开始埋头苦想</h3><p>这埋的雷够巧妙啊，不过难不倒我，这个灵机一动动~诶，我可以这样做:</p>
+<blockquote>
+<p>在跳转的时候，先用一个静态变量引用数据，等TargetActivity起来的时候，再把静态变量置为null，哎呀，一不小心还注意到了要避免内存泄漏，太棒了！</p>
+</blockquote>
+<pre><code class="java">
+public class TargetActivity extends AppCompatActivity {
 
-    
+    // 临时承载数据
+    private static Bean sBean;
+    // activity起来的时候真正引用到数据
+    private Bean mBean;
 
-    
-        <script>
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * null + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
-    $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
+    /**
+     * 启动TargetActivity必须统一走这个方法
+     * @param context c
+     * @param bean bean
+     */
+    public static void start(Context context, Bean bean) {
+        Intent starter = new Intent(context, TargetActivity.class);
+        // 静态变量先拿着
+        sBean = bean;
+        context.startActivity(starter);
     }
-</script>
+
+
+    {
+        // 成员变量拿到引用
+        mBean = sBean;
+        // 静态变量置空，防止内存泄漏
+        sBean = null;
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_target);
+        Log.i(&quot;LiuZh&quot;, &quot;onCreate: &quot; + mBean.name + &quot;  &quot; + mBean.age);
+    }
+}
+</code></pre>
+<p>总感觉这种拍脑袋就搞出来的骚操作有点不太对劲啊</p>
+<p>对了！如果有两个地方依次相接调用<code>TargetActivity.start(Context,Bean)</code>方法，第一个start调用还没开始创建activity呢，第二个start就把sBean重新赋值了，那两个activity就拿到了同一个数据…..不行，这样就乱了，得规避一下这问题—（至于有没有允许启动多个相同activity的需求，反正我有….也总会有的）</p>
+<p>这样的话，我可以把start方法锁住，然后执行完了<code>sBean = null;</code>这个语句再解锁？</p>
+<p>那要怎么写呢，那就给start方法加个synchronized吧，startActivity语句走完就阻塞住，等activity起来拿到数据的时候就解阻塞，好像可以</p>
+<p>接下来就是，要怎么阻塞呢？而且阻塞的话千万不能在主线程，也就意味着我需要在子线程内锁代码块，在子线程内阻塞。这样的话，就在子线程用一个while(flag)吧，activity拿完数据就修改flag通知一下，哦了，啪啪就是敲</p>
+<pre><code class="java">public class TargetActivity extends AppCompatActivity {
+   // 临时承载数据
+    private static Bean sBean;
+    // activity起来的时候真正引用到数据
+    private Bean mBean;
+
+    private static boolean sNextStartTaskFlag = false;
+
+    /**
+     * 启动TargetActivity必须统一走这个方法
+     *
+     * @param context c
+     * @param bean    bean
+     */
+    public static void start(final Context context, final Bean bean) {
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                synchronized (TargetActivity.class) {
+                    sNextStartTaskFlag = false;
+                    Intent starter = new Intent(context, TargetActivity.class);
+                    // 静态变量先拿着
+                    sBean = bean;
+                    context.startActivity(starter);
+                    // 阻塞住
+                    while (!sNextStartTaskFlag) ;// do nothing
+                }
+            }
+        }.start();
+    }
+
+
+    {
+        // 成员变量拿到引用
+        mBean = sBean;
+        // 静态变量置空，防止内存泄漏
+        sBean = null;
+        // 我ok了, 下一个start可以走了
+        sNextStartTaskFlag = true;
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_target);
+        Log.i(&quot;LiuZh&quot;, &quot;onCreate: &quot; + mBean.name + &quot;  &quot; + mBean.age);
+    }
+
+}
+</code></pre>
+<p>得，这样应该没啥问题了，走你</p>
+<ul>
+<li>MainActivity布局</li>
+</ul>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:gravity=&quot;center&quot;
+    android:orientation=&quot;vertical&quot;
+    tools:context=&quot;com.example.activitydemo.MainActivity&quot;&gt;
+
+    &lt;TextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:text=&quot;Hello World!&quot; /&gt;
+
+    &lt;Button
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:onClick=&quot;startTargetActivity&quot;
+        android:text=&quot;走 你&quot; /&gt;
+
+
+&lt;/LinearLayout&gt;
+</code></pre>
+<ul>
+<li>MainActivity</li>
+</ul>
+<pre><code>public class MainActivity extends AppCompatActivity {
+
+    private Activity mContext;
+    private Bean mBean = new Bean();
+
+    {
+        mContext = this;
+        mBean.name = &quot;LiuZh&quot;;
+        mBean.age = 22;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void startTargetActivity(View view) {
+        TargetActivity.start(mContext, mBean);
+    }
+
+
+}
+</code></pre><ul>
+<li>走你</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2018/2/3/1615acfc9d774f4e?w=362&amp;h=617&amp;f=png&amp;s=10320" alt="走你"></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/2/3/1615acfc9d628c28?w=1202&amp;h=439&amp;f=png&amp;s=26152" alt="Logcat有Log"></p>
+<p>哦哟，好像还挺不错的，好，作为一个有追求的小码渣，还是来自测一下吧，<strong>用多个线程来疯狂调用一下的start方法：</strong></p>
+<pre><code class="java">    public void startTargetActivity(View view) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i &lt; 2; i++) {
+                    Bean bean = new Bean();
+                    bean.name = &quot;thread_1_LiuZh_&quot; + i;
+                    bean.age = i;
+                    TargetActivity.start(mContext, bean);
+                    Log.i(&quot;LiuZh&quot;, &quot;Thread_1: &quot; + i);
+                }
+            }
+        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i &lt; 2; i++) {
+                    Bean bean = new Bean();
+                    bean.name = &quot;thread_2_LiuZh_&quot; + i;
+                    bean.age = i;
+                    TargetActivity.start(mContext, bean);
+                    Log.i(&quot;LiuZh&quot;, &quot;Thread_2: &quot; + i);
+                }
+            }
+        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i &lt; 2; i++) {
+                    Bean bean = new Bean();
+                    bean.name = &quot;thread_3_LiuZh_&quot; + i;
+                    bean.age = i;
+                    TargetActivity.start(mContext, bean);
+                    Log.i(&quot;LiuZh&quot;, &quot;Thread_3: &quot; + i);
+                }
+            }
+        }).start();
+    }
+</code></pre>
+<ul>
+<li>走你</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2018/2/3/1615acfc9d712952?w=1240&amp;h=371&amp;f=png&amp;s=163478" alt="疯狂自测"></p>
+<p>哦了，从Log看起来没问题了，看看是不是有6个activity起来了吧，看模拟器去吧</p>
+<p>啥？图？</p>
+<p><strong>没图！自个跑一遍吧</strong></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><blockquote>
+<ul>
+<li>更多内容欢迎访问<a href="https://liuzho.com"><strong>我的主页</strong></a>或<a href="https://liuzho.github.io" target="_blank" rel="external"><strong>我的博客</strong></a></li>
+<li>觉得本文/本Demo对你有所帮助，请不要忘了点一下文末的”♡”让他变成”❤”</li>
+<li>文中有不妥/错误之处，还请见谅并指出</li>
+<li>学习就是耐住寂寞不断踩坑，多动手敲就能有更多的知识经验和肩椎脊柱受损T_T</li>
+</ul>
+</blockquote>
+
+    
 
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/07/29/RN2Native/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -532,6 +883,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 
